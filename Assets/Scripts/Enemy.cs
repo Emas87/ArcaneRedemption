@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour
     public virtual void Run()
     {
         // IA to move closer to the player
-        Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        PlayerMovement player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         Vector2 direction = player.transform.position - transform.position;
         // 0.1 since position.x is never 0
         if (direction.x > 0.1)

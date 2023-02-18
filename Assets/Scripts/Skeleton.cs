@@ -43,7 +43,7 @@ public class Skeleton : Enemy
 
     private void ShouldRun() {
         // if user is at a certain distance start chasing it
-        Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        PlayerMovement player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         Vector2 direction = player.transform.position - transform.position;
         isRunning = direction.x <= chasingDistance;
     }
