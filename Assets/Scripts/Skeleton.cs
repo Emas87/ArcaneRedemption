@@ -41,6 +41,8 @@ public class Skeleton : Enemy
         collision.GetType();
     }
 
+    // tO know IF platform is about to finish  player is upper than enemy, we need another collider that check when there is no platform probably ontriggerExit
+
     private void ShouldRun() {
         // if user is at a certain distance start chasing it
         Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
