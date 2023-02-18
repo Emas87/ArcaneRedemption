@@ -5,31 +5,62 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    private int _speed = 3;
+    protected int _speed = 3;
     [SerializeField]
-    private int _life = 10;
+    protected int life = 10;
     [SerializeField]
-    private int _experience = 1;
-    // Start is called before the first frame update
+    protected int experience = 1;
+    [SerializeField]
+    protected bool isRunning = false;
+
+    [SerializeField]
+    protected float chasingDistance = 10;
+
+    [SerializeField]
+    protected float jumpForce = 25;
+
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+    }
+    
+    public virtual void Fly() { 
+    }
+    public virtual void OnHit() { 
+    }
+    public virtual void OnAttack() { 
+    }
+    public virtual void OnDead() { 
+    }
+    public virtual void Jump()
+    {
+    }
+    public virtual bool canJump()
+    {
+        return true;
+    }
+    public virtual void Run()
+    {
         // IA to move closer to the player
         Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         Vector2 direction = player.transform.position - transform.position;
         // 0.1 since position.x is never 0
-        if(direction.x > 0.1)
+        if (direction.x > 0.1)
         {
             transform.Translate(_speed * Time.deltaTime, 0, 0);
-        } 
-       if (direction.x < -0.1)
+            transform.localScale = new(-1 * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.x);
+        }
+        if (direction.x < -0.1)
         {
+            transform.localScale = new(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.x);
             transform.Translate(-_speed * Time.deltaTime, 0, 0);
         }
     }
+
+
 }
