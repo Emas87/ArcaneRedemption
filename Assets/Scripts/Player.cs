@@ -23,11 +23,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CalculateMovement();
-        if (Input.GetKeyDown(KeyCode.Space) && canJump())
-        {
-            Jump();
-        }
     }
 
     void FireLaser()
@@ -53,13 +48,5 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    void CalculateMovement()
-    {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticallInput = Input.GetAxis("Vertical");
-        transform.Translate(_speed * horizontalInput * Time.deltaTime * Vector3.right);
-        transform.Translate(_speed * Time.deltaTime * verticallInput * Vector3.up);
     }
 }
