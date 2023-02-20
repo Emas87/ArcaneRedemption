@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -7,31 +8,38 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     protected int _speed = 3;
     [SerializeField]
-    protected int life = 10;
+    protected int life = 40;
     [SerializeField]
     protected int experience = 1;
     [SerializeField]
     protected bool isRunning = false;
 
     [SerializeField]
-    protected float chasingDistance = 10;
+    protected float chasingDistance = 30;
 
     [SerializeField]
     protected float jumpForce = 25;
+
+    protected Rigidbody2D rb;
+    protected bool attacking = false;
+    protected bool isJumping = false;
 
     void Start()
     {
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
-        
+        if (isDead())
+        {
+            Destroy(gameObject);
+        }
     }
     
     public virtual void Fly() { 
     }
-    public virtual void OnHit() { 
+    public virtual void OnHit(int damage) { 
     }
     public virtual void OnAttack() { 
     }
@@ -39,10 +47,18 @@ public class Enemy : MonoBehaviour
     }
     public virtual void Jump()
     {
+        if (CanJump())
+        {
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            isJumping = true;
+        }
     }
-    public virtual bool canJump()
+    public virtual bool CanJump()
     {
-        return true;
+        // Only allow 1 jump
+        EdgeCollider2D collider = GetComponent<EdgeCollider2D>();
+        int temp = LayerMask.GetMask("Ground");
+        return collider.IsTouchingLayers(temp);
     }
     public virtual void Run()
     {
@@ -62,5 +78,8 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
+    public virtual bool isDead()
+    {
+        return life <= 0;
+    }
 }

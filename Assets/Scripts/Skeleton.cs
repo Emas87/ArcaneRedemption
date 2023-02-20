@@ -1,29 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Skeleton : Enemy
 {
-    private Rigidbody2D rb;
+    BoxCollider2D frontCollider;
+    EdgeCollider2D feetCollider;
+    CapsuleCollider2D bodyCollider;
+    CircleCollider2D attackCollider;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        frontCollider = GetComponent<BoxCollider2D>();
+        feetCollider = GetComponent<EdgeCollider2D>();
+        bodyCollider = GetComponent<CapsuleCollider2D>();
+        attackCollider = GetComponent<CircleCollider2D>();
         rb.gravityScale = 2;
-        jumpForce= 15;
+        jumpForce = 15;
     }
 
-    public override void Jump()
+    public override void Update()
     {
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && canJump())
-        {
-            Jump();
-        }
+        base.Update();
         ShouldRun();
         if (isRunning)
         {
@@ -31,17 +30,26 @@ public class Skeleton : Enemy
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.tag != "Platform") {
-            isRunning = false;
-            Jump();
+        if (feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && isJumping)
+        {
+            isJumping = false;
         }
 
-        collision.GetType();
+        bool temp1 = frontCollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
+
+        // if front is sensing a wall and enemy is not in the air and player is not in attack range, then jump
+        if (frontCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !isJumping && !attackCollider.IsTouchingLayers(LayerMask.GetMask("Player")))
+        {
+            if (other.gameObject.CompareTag("Platform"))
+            {
+                isRunning = false;
+                Jump();
+            }
+        }        
     }
 
-    // tO know IF platform is about to finish  player is upper than enemy, we need another collider that check when there is no platform probably ontriggerExit
 
     private void ShouldRun() {
         // if user is at a certain distance start chasing it
@@ -51,13 +59,14 @@ public class Skeleton : Enemy
     }
 
     //TODO
-    public override void OnHit()
+    public override void OnHit(int damage)
+    {
+        life =- damage;
+    }
+    public override void OnDead()
     {
     }
     public override void OnAttack()
-    {
-    }
-    public override void OnDead()
     {
     }
 

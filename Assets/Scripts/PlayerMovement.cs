@@ -17,7 +17,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpSpeed = 29f;
     [SerializeField] float dashSpeed = 20f;
     [SerializeField] float dashTime = 0.2f;
+    [SerializeField] private float _fireRate = 0.5f;
 
+    private GameObject _projectile;
+    private float nextFire = 0;
     float dashCoolDownTime = 0.15f;
     bool dashCoolDownActive = false;
     bool canDash = true; // put on true when landing on something
@@ -56,6 +59,10 @@ public class PlayerMovement : MonoBehaviour
     void Run(){
         Vector2 playerVelocity = new Vector2(moveInput.x * moveSpeed, myRigidBody.velocity.y);
         myRigidBody.velocity = playerVelocity;
+        if (playerVelocity.x < 0)
+            transform.localScale = new(-1 * Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        else if (playerVelocity.x > 0)
+            transform.localScale = new(Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
     }
 
     void  OnMove(InputValue val){
@@ -120,6 +127,22 @@ public class PlayerMovement : MonoBehaviour
     }
     void deadMove(){
         //myRigidBody.velocity = new Vector2(20f, 20f);
+    }
+
+    void ShootProjectile()
+    {
+        _projectile = Resources.Load<GameObject>("Prefabs/bullet");
+        nextFire = Time.time + _fireRate;
+        
+        Instantiate(_projectile, transform.Find("projectileSpawn").position, transform.rotation);
+    }
+
+    private void OnFire(InputValue value)
+    {
+        if (!playerStats.isDead && Time.time > nextFire)
+        {
+            ShootProjectile();
+        }
     }
 
 }
