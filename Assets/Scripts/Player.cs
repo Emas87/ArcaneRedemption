@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     {
         nextFire = Time.time + _fireRate;
         Instantiate(_bullet, transform.position + new Vector3(0, (float)0.8, 0), Quaternion.identity);
+        
     }
 
     void Jump()
