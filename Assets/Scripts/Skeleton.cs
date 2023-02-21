@@ -32,6 +32,12 @@ public class Skeleton : Enemy
         }
     }
 
+    private void OnTriggerExit2D(Collider2D other) {
+        if (!attackCollider.IsTouchingLayers(LayerMask.GetMask("Player")))
+        {
+            animator.SetBool("isAttacking", false);
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && isJumping)
@@ -44,23 +50,20 @@ public class Skeleton : Enemy
         {
             if (other.gameObject.CompareTag("Platform"))
             {
-                isRunning = false;
                 Jump();
             }
         }
         if (attackCollider.IsTouchingLayers(LayerMask.GetMask("Player")))
         {
             animator.SetBool("isAttacking", true);
-        } else
-        {
-            animator.SetBool("isAttacking", false);
         }
     }
-
-    //TODO
-    public override void OnAttack()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-
+        if (bodyCollider.IsTouchingLayers(LayerMask.GetMask("Player")))
+        {
+            OnAttack(10);
+        }        
     }
 
 }

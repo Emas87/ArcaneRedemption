@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour
             return;
         }
         animator.SetBool("isRunning", isRunning);
+        animator.SetBool("isJumping", IsMoving()[1]);
     }
 
     public virtual void Fly() { 
@@ -50,7 +51,9 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger("isDead");
         rb.velocity = deathKick;
     }
-    public virtual void OnAttack() { 
+    public virtual void OnAttack(int damage) {
+        PlayerStats player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        player.receiveDamage(damage);
     }
     public virtual bool[] IsMoving()
     {

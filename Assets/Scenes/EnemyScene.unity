@@ -1873,16 +1873,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1
-  - first: {x: 0, y: -2, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 8
-      m_TileSpriteIndex: 16
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1
   - first: {x: 2, y: -2, z: 0}
     second:
       serializedVersion: 2
@@ -2191,7 +2181,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: b6acf296339b645498f49cbba30a29b1, type: 2}
   - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: 41a8b9f53630bd041a0f5cbc397897ac, type: 2}
-  - m_RefCount: 29
+  - m_RefCount: 28
     m_Data: {fileID: 11400000, guid: 6b37336cc1272de4f8feadafd4c7ab59, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: f5b1259fc200c154a8daa12075508f38, type: 2}
@@ -2232,7 +2222,7 @@ Tilemap:
     m_Data: {fileID: 21300202, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 29
+  - m_RefCount: 28
     m_Data: {fileID: 21300200, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300128, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
@@ -2243,7 +2233,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 21300078, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 181
+  - m_RefCount: 180
     m_Data:
       e00: 1
       e01: 0
@@ -2334,7 +2324,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 191
+  - m_RefCount: 190
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 0
     m_Data: {r: 5.1573e-41, g: 5.1573e-41, b: 5.1573e-41, a: 5.1573e-41}
@@ -2509,7 +2499,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.41, y: -3.61, z: -10}
+  m_LocalPosition: {x: 18.9, y: -3.61, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2729,7 +2719,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942214257}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.41, y: -3.61, z: -10}
+  m_LocalPosition: {x: 18.9, y: -3.61, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2949,7 +2939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2790212832211037232, guid: 93c0bf76b5704b1408b59b6ba3bf3735, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.13
+      value: 4.65
       objectReference: {fileID: 0}
     - target: {fileID: 2790212832211037232, guid: 93c0bf76b5704b1408b59b6ba3bf3735, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2991,6 +2981,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 2790212832211037237, guid: 93c0bf76b5704b1408b59b6ba3bf3735, type: 3}
+      propertyPath: life
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2790212832211037237, guid: 93c0bf76b5704b1408b59b6ba3bf3735, type: 3}
+      propertyPath: deathKick.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2790212832211037237, guid: 93c0bf76b5704b1408b59b6ba3bf3735, type: 3}
+      propertyPath: deathKick.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2790212832745604582, guid: 93c0bf76b5704b1408b59b6ba3bf3735, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.14
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93c0bf76b5704b1408b59b6ba3bf3735, type: 3}
 --- !u!1001 &2930825104022067126
@@ -3006,7 +3012,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2930825102569853494, guid: 8ed719b1f138d3a4ab72562ff9f8c3bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.41
+      value: 18.9
       objectReference: {fileID: 0}
     - target: {fileID: 2930825102569853494, guid: 8ed719b1f138d3a4ab72562ff9f8c3bd, type: 3}
       propertyPath: m_LocalPosition.y

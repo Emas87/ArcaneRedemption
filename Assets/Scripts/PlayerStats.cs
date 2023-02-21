@@ -34,10 +34,14 @@ public class PlayerStats : MonoBehaviour
     {
     }
 
-    void receiveDamage(int incomingDmg){
+    public void receiveDamage(int incomingDmg){
+
+        //TODO Add invincibility frames because player is dying in 1 second
+
         healthPoints -= (incomingDmg - resistence);
         if(healthPoints <= 0f){
             isDead = true;
+            Debug.Log("Player is dead");
         }
     }
 }
