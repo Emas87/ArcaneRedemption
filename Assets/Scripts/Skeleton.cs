@@ -16,6 +16,8 @@ public class Skeleton : Enemy
         feetCollider = GetComponent<EdgeCollider2D>();
         bodyCollider = GetComponent<CapsuleCollider2D>();
         attackCollider = GetComponent<CircleCollider2D>();
+        animator = transform.Find("Animation").GetComponent<Animator>();
+
         rb.gravityScale = 2;
         jumpForce = 15;
     }
@@ -37,8 +39,6 @@ public class Skeleton : Enemy
             isJumping = false;
         }
 
-        bool temp1 = frontCollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
-
         // if front is sensing a wall and enemy is not in the air and player is not in attack range, then jump
         if (frontCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !isJumping && !attackCollider.IsTouchingLayers(LayerMask.GetMask("Player")))
         {
@@ -47,27 +47,20 @@ public class Skeleton : Enemy
                 isRunning = false;
                 Jump();
             }
-        }        
-    }
-
-
-    private void ShouldRun() {
-        // if user is at a certain distance start chasing it
-        PlayerMovement player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-        Vector2 direction = player.transform.position - transform.position;
-        isRunning = direction.x <= chasingDistance;
+        }
+        if (attackCollider.IsTouchingLayers(LayerMask.GetMask("Player")))
+        {
+            animator.SetBool("isAttacking", true);
+        } else
+        {
+            animator.SetBool("isAttacking", false);
+        }
     }
 
     //TODO
-    public override void OnHit(int damage)
-    {
-        life =- damage;
-    }
-    public override void OnDead()
-    {
-    }
     public override void OnAttack()
     {
+
     }
 
 }

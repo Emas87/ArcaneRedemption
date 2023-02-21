@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3
-  life: 10
+  life: 40
   experience: 1
   isRunning: 0
   chasingDistance: 15
