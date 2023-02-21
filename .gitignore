@@ -1,4 +1,5 @@
-Library/*
+Library/PackageCache/*
+Library/Artifacts*
 Logs/*
 obj/*
 Temp/*
