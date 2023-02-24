@@ -1,5 +1,9 @@
 Library/PackageCache/*
+Library/BurstCache/*
+Library/ShaderCache/*
+Library/StateCache/*
 Library/Artifacts*
+Library/Bee/artifacts/*
 Logs/*
 obj/*
 Temp/*

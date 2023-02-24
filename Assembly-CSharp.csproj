@@ -65,6 +65,9 @@
     <Compile Include="Assets\Scripts\VampireHabilities.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Level1\pixel_snapping_README.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity 2021.3.17f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
