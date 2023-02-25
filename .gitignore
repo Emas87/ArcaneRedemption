@@ -16,6 +16,8 @@ Library/SourceAssetDB
 Library/ScriptAssemblies/Assembly-CSharp.dll
 Library/ScriptAssemblies/Assembly-CSharp.pdb
 Library/Search/transactions.db
+Library/SceneVisibilityState.asset
+Library/expandedItems
 UserSettings/Layouts/default-2021.dwlt
 Logs/*
 obj/*
