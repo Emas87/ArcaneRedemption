@@ -39,8 +39,12 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
-        if(checkIsDead()){
+    {
+        if (DialogueManager.isActive)
+        {
+            return;
+        }
+        if (checkIsDead()){
             return;
         }
         if(isDashing){
@@ -65,13 +69,17 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new(Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
     }
 
-    void  OnMove(InputValue val){
+    void OnMove(InputValue val){
         moveInput = val.Get<Vector2>();
         Debug.Log(moveInput);
     }
 
     void OnJump(InputValue val){
-        if(!playerStats.isDead){
+        if (DialogueManager.isActive)
+        {
+            return;
+        }
+        if (!playerStats.isDead){
             if(myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))){
                 if(val.isPressed){
                     myRigidBody.velocity += new Vector2(0f, jumpSpeed);
@@ -139,6 +147,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnFire(InputValue value)
     {
+        if (DialogueManager.isActive)
+        {
+            return;
+        }
         if (!playerStats.isDead && Time.time > nextFire)
         {
             ShootProjectile();
