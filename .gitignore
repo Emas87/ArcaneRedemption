@@ -1,4 +1,16 @@
-Library/*
+Library/PackageCache/*
+Library/BurstCache/*
+Library/ShaderCache/*
+Library/StateCache/*
+Library/Artifacts*
+Library/Bee/artifacts/*
+Library/Bee/backend_profiler0.traceevents
+Library/Bee/fullprofile.json
+Library/Bee/tundra.digestcache
+Library/ArtifactDB
+Library/EditorInstance.json
+Library/SourceAssetDB
+UserSettings/Layouts/default-2021.dwlt
 Logs/*
 obj/*
 Temp/*
