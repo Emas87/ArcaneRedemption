@@ -14,9 +14,9 @@ public class PlayerMovement : MonoBehaviour
     CapsuleCollider2D myCapsuleCollider;
 
     [SerializeField] float moveSpeed = 10;
-    [SerializeField] float jumpSpeed = 29f;
-    [SerializeField] float dashSpeed = 20f;
-    [SerializeField] float dashTime = 0.2f;
+    [SerializeField] float jumpSpeed = 25f;
+    [SerializeField] float dashSpeed = 16f;
+    [SerializeField] float dashTime = 0.18f;
     [SerializeField] private float _fireRate = 0.5f;
 
     private GameObject _projectile;
@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-        if (!playerStats.isDead){
+        if(!playerStats.isDead && !isDashing){
             if(myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))){
                 if(val.isPressed){
                     myRigidBody.velocity += new Vector2(0f, jumpSpeed);
@@ -111,7 +111,8 @@ public class PlayerMovement : MonoBehaviour
 
         float gravity = myRigidBody.gravityScale;
         myRigidBody.gravityScale = 0f;
-        myRigidBody.velocity += new Vector2(moveInput.x*dashSpeed, 0f);
+        myRigidBody.velocity = Vector2.zero;
+        myRigidBody.velocity = new Vector2(moveInput.x*dashSpeed, 0f);
         
         myTrailRenderer.emitting = true;
         yield return new WaitForSeconds(dashTime);
