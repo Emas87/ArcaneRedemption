@@ -24,6 +24,8 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField] public bool vampHability = false;
 
+    public float pikesDamage = 3f;
+
     void Start()
     {
         
@@ -34,7 +36,7 @@ public class PlayerStats : MonoBehaviour
     {
     }
 
-    public void receiveDamage(int incomingDmg){
+    public void receiveDamage(float incomingDmg){
 
         //TODO Add invincibility frames because player is dying in 1 second
 
@@ -44,4 +46,14 @@ public class PlayerStats : MonoBehaviour
             Debug.Log("Player is dead");
         }
     }
+    void OnTriggerEnter2D(Collider2D other) {
+        if(other.tag == "Pikes"){
+            //receiveDamage(pikesDamage);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D other) {
+        
+    }
+
 }
