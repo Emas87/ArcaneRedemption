@@ -23,7 +23,7 @@ public class Dialogues : ScriptableObject
         };
         dialogue[2] = new string[] {
             "If you help me I'll help you",
-            "Thanks,\r\nNow you can dash with the 'Shift' key.",
+            "Thanks,\r\nYou can dash with the 'Shift' key. Try using it in the air to reach more during a jump",
             "I'll follow you to get out of here."
         };
         dialogue[3] = new string[] {

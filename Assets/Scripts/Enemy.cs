@@ -64,13 +64,13 @@ public class Enemy : MonoBehaviour
     }
     public virtual void Jump()
     {
-        if (!IsDead() && CanJump())
+        if (!IsDead() && IsGrounded())
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isJumping = true;
         }
     }
-    public virtual bool CanJump()
+    public virtual bool IsGrounded()
     {
 
         // Only allow 1 jump
