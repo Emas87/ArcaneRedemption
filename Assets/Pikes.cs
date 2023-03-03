@@ -5,7 +5,6 @@ using UnityEngine;
 public class Pikes : MonoBehaviour
 {
     // Start is called before the first frame update
-    PlayerStats playerStats;
     [SerializeField] float pikesDamage = 3f;
     void Start()
     {

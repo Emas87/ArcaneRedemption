@@ -46,14 +46,5 @@ public class PlayerStats : MonoBehaviour
             Debug.Log("Player is dead");
         }
     }
-    void OnTriggerEnter2D(Collider2D other) {
-        if(other.tag == "Pikes"){
-            //receiveDamage(pikesDamage);
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D other) {
-        
-    }
 
 }
