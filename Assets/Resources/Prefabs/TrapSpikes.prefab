@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7297284316083226962}
   - component: {fileID: 3387266621224635242}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: T1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7379679270840914761}
   - component: {fileID: 2903457030729648129}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: T5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 177758954571821145}
   - component: {fileID: 1281152009077593046}
   - component: {fileID: 2281414905584135185}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TrapSpikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1693986685824539066}
   - component: {fileID: 3878885645491127396}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: T4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5591784140158622718}
   - component: {fileID: 3202414812874813239}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: T3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2894301898745828554}
   - component: {fileID: 8550699749562530906}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: T2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,7 +516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3368416828651556852}
   - component: {fileID: 6770200266917735068}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: T0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
