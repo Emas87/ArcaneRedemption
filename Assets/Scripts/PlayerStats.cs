@@ -39,8 +39,11 @@ public class PlayerStats : MonoBehaviour
     public void receiveDamage(float incomingDmg){
 
         //TODO Add invincibility frames because player is dying in 1 second
-
+        Debug.Log("receiving damage with");
+        Debug.Log(healthPoints);
         healthPoints -= (incomingDmg - resistence);
+        Debug.Log("HP left:");
+        Debug.Log(healthPoints);
         if(healthPoints <= 0f){
             isDead = true;
             Debug.Log("Player is dead");
