@@ -15,8 +15,7 @@ public class PlayerStats : MonoBehaviour
     public int strength = 1;
 
     [SerializeField] public bool isDead = false;
-
-
+    [SerializeField] public bool hasKey = false;
     [SerializeField] public bool doubleJumpHability = true;
     [SerializeField] public bool dashHability = true;
 
@@ -34,6 +33,7 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(hasKey);
     }
 
     public void receiveDamage(float incomingDmg){
@@ -48,6 +48,15 @@ public class PlayerStats : MonoBehaviour
             isDead = true;
             Debug.Log("Player is dead");
         }
+    }
+
+    public void takeKey(){
+        hasKey = true;
+        //reproducir sonido de agarrar key?
+    }
+
+    public void removeKey(){
+        hasKey = false;
     }
 
 }
