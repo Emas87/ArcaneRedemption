@@ -13,8 +13,7 @@ public class PlayerStats : MonoBehaviour
     public bool _inminuty = false;
 
     [SerializeField] public bool isDead = false;
-
-
+    [SerializeField] public bool hasKey = false;
     [SerializeField] public bool doubleJumpHability = true;
     [SerializeField] public bool dashHability = true;
     [SerializeField] public bool wolfHability = false;
@@ -36,8 +35,8 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(hasKey);
     }
-
     public void receiveDamage(float incomingDmg, Vector2 direction){
 
         if (!_inminuty)
@@ -56,6 +55,15 @@ public class PlayerStats : MonoBehaviour
                 playerMovement.Knockback(direction);
             }
         }
+    }
+
+    public void takeKey(){
+        hasKey = true;
+        //reproducir sonido de agarrar key?
+    }
+
+    public void removeKey(){
+        hasKey = false;
     }
 
 }

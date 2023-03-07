@@ -23,7 +23,7 @@ public class Lever : MonoBehaviour
             b_on = false;
             spriteRenderer.sprite = off;
 
-            Door door = triggered.GetComponent<Door>();
+            MedievalDoor door = triggered.GetComponent<MedievalDoor>();
             if (door != null)
             {
                 door.stopSpawn = true;
@@ -34,7 +34,7 @@ public class Lever : MonoBehaviour
         {
             b_on = true;
             spriteRenderer.sprite = on;
-            Door door = triggered.GetComponent<Door>();
+            MedievalDoor door = triggered.GetComponent<MedievalDoor>();
             if (door != null)
             {
                 door.stopSpawn = false;
