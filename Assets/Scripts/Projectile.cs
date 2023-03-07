@@ -39,7 +39,8 @@ public class Projectile : MonoBehaviour
             {
                 // nEED TO CEHCK WHAT CAN OF enemy is before getting the compeonet
                 Skeleton skeleton = other.gameObject.GetComponent<Skeleton>();
-                skeleton.OnHit(10);
+                Vector2 direction = transform.position - skeleton.transform.position;
+                skeleton.OnHit(10, direction);
                 Destroy(gameObject);
             }
         }

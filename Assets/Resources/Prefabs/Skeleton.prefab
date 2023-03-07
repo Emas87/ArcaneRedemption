@@ -48,7 +48,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 2790212832211037233}
   m_BodyType: 0
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
   isRunning: 0
   chasingDistance: 15
   jumpForce: 15
-  deathKick: {x: 0, y: 1}
+  _knockback: {x: 5, y: 5}
 --- !u!70 &1105089029
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -91,8 +91,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.024528503}
-  m_Size: {x: 0.5, y: 0.950943}
+  m_Offset: {x: -0.0052223206, y: 0.040904045}
+  m_Size: {x: 0.594017, y: 0.9181919}
   m_Direction: 0
 --- !u!61 &4476640553323161437
 BoxCollider2D:
@@ -130,7 +130,7 @@ EdgeCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -233,15 +233,15 @@ SpriteRenderer:
   m_SortingLayerID: -62419721
   m_SortingLayer: 3
   m_SortingOrder: 11
-  m_Sprite: {fileID: 2078964560, guid: 4104ee12b4d54f54b91b3ba875787837, type: 3}
+  m_Sprite: {fileID: -743305798, guid: 93fc4aa8d1958bd48b10c978c5ff83cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.0555556}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &570129369

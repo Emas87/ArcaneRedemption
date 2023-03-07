@@ -7,6 +7,10 @@ TagManager:
   - Enemy
   - Platform
   - Projectile
+  - Pikes
+  - Boulder
+  - Trigger
+  - Chest
   layers:
   - Default
   - TransparentFX
@@ -19,7 +23,7 @@ TagManager:
   - Player
   - Projectiles
   - Background
-  - 
+  - Triggers
   - 
   - 
   - 

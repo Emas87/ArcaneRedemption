@@ -52,6 +52,7 @@ public class DialogueManager : MonoBehaviour
             isActive = false;
             transform.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();
             // Destroy rescued
+            currentTalking.DestroyRescued();
             Destroy(currentTalking.gameObject);
         }
     }

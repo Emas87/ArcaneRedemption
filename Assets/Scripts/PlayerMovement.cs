@@ -3,25 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+//using UnityEngine.Windows;
 
 public class PlayerMovement : MonoBehaviour
-{   
-
-    Vector2 moveInput;
+{  
     Rigidbody2D myRigidBody;
     PlayerStats playerStats;
     TrailRenderer myTrailRenderer;
     CapsuleCollider2D myCapsuleCollider;
 
-    [SerializeField] float moveSpeed = 10;
+    [SerializeField] public float moveSpeed = 10;
     [SerializeField] float jumpSpeed = 25f;
     [SerializeField] float dashSpeed = 16f;
     [SerializeField] float dashTime = 0.18f;
-    [SerializeField] private float _fireRate = 0.5f;
+    [SerializeField] private float attackRange = 0.9f;
+    [SerializeField] private int attackDamage = 10;
+    [SerializeField] Vector2 _knockback = new(10,10);
 
     private Animator _animator;
-    private GameObject _projectile;
-    private float nextFire = 0;
     float dashCoolDownTime = 0.15f;
     bool dashCoolDownActive = false;
     bool canDash = true; // put on true when landing on something
@@ -32,6 +31,9 @@ public class PlayerMovement : MonoBehaviour
     float _timeSinceAttack = 0.0f;
     int _currentAttack = 0;
     float _timeBetweenAttacks = 0.25f;
+    bool _canMove = true;
+    float _inminutyTime = 0.5f;
+    bool triggering = false;
 
 
 
@@ -45,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
         myTrailRenderer = GetComponent<TrailRenderer>();
 
         _animator.SetBool("Grounded", true);
+        _animator.SetBool("Death", false);
     }
 
     // Update is called once per frame
@@ -75,21 +78,28 @@ public class PlayerMovement : MonoBehaviour
             _animator.SetBool("Grounded", _grounded);
         }
 
+        if (playerStats.isDead){
+            return;
+        }
         if (DialogueManager.isActive)
         {
             // Stoping player to show dialogue
             myRigidBody.velocity = Vector2.zero;
-            moveInput = Vector2.zero;
-            return;
-        }
-        if (checkIsDead()){
             return;
         }
         if(isDashing){
             return;
         }
         resetDash();
-        Run();
+        if (_canMove)
+        {
+            Movement();
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            StartCoroutine(Triggering());
+        }
     }
     bool IsGrounded()
     {
@@ -102,32 +112,23 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-    void Run(){
+    void Movement(){
         if (DialogueManager.isActive)
         {
             return;
         }
-        Vector2 playerVelocity = new Vector2(moveInput.x * moveSpeed, myRigidBody.velocity.y);
-        myRigidBody.velocity = playerVelocity;
-        if (playerVelocity.x < 0)
+        float inputX = Input.GetAxis("Horizontal");
+        myRigidBody.velocity = new Vector2(inputX * moveSpeed, myRigidBody.velocity.y);
+        if (myRigidBody.velocity.x < 0)
         {
             transform.localScale = new(-1 * Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             _animator.SetInteger("AnimState", 1);
         }
-        else if (playerVelocity.x > 0)
+        else if (myRigidBody.velocity.x > 0)
         {
             transform.localScale = new(Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             _animator.SetInteger("AnimState", 1);
         }
-
-    }
-
-    void OnMove(InputValue val){
-        if (DialogueManager.isActive)
-        {
-            return;
-        }
-        moveInput = val.Get<Vector2>();
     }
 
     void OnJump(InputValue val){
@@ -176,7 +177,8 @@ public class PlayerMovement : MonoBehaviour
         float gravity = myRigidBody.gravityScale;
         myRigidBody.gravityScale = 0f;
         myRigidBody.velocity = Vector2.zero;
-        myRigidBody.velocity = new Vector2(moveInput.x*dashSpeed, 0f);
+        float inputX = Input.GetAxis("Horizontal");
+        myRigidBody.velocity = new Vector2(inputX * dashSpeed, 0f);
         
         myTrailRenderer.emitting = true;
         yield return new WaitForSeconds(dashTime);
@@ -191,25 +193,6 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    bool checkIsDead(){
-        if(playerStats.isDead){
-            deadMove();
-            return true;
-        }
-        return false;
-    }
-    void deadMove(){
-        _animator.SetBool("noBlood", true);
-        _animator.SetTrigger("Death");
-    }
-
-    void ShootProjectile()
-    {
-        _projectile = Resources.Load<GameObject>("Prefabs/bullet");
-        nextFire = Time.time + _fireRate;
-        
-        Instantiate(_projectile, transform.Find("projectileSpawn").position, transform.rotation);
-    }
 
     private void OnFire(InputValue value)
     {
@@ -217,9 +200,9 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-
         else if (_timeSinceAttack > _timeBetweenAttacks)
         {
+            // Animations
             _currentAttack++;
 
             // Loop back to one after third attack
@@ -235,7 +218,86 @@ public class PlayerMovement : MonoBehaviour
 
             // Reset timer
             _timeSinceAttack = 0.0f;
+
+            // Animation 2 hits faster
+            float attackAnimationTime = _currentAttack == 2 ? 0.02f : 0.03f;
+
+            // Damages
+            //Find if there is enemy in the range
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.Find("attackPoint").position, attackRange, LayerMask.GetMask("Enemies"));
+            foreach (Collider2D hitEnemy in hitEnemies)
+            {
+                if (hitEnemy.GetType() == typeof(CapsuleCollider2D))
+                {
+                    Vector2 direction = transform.position - hitEnemy.transform.position;
+                    StartCoroutine(Attack(attackAnimationTime));
+                    hitEnemy.gameObject.GetComponent<Enemy>().OnHit(attackDamage, direction);
+                }
+            }
         }
     }
 
+    IEnumerator Attack(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+    }
+
+    public void Knockback(Vector2 direction)
+    {
+        myRigidBody.velocity = new(-_knockback.x * direction.x, _knockback.y);
+        float scale = direction.x > 0? Mathf.Abs(transform.localScale.x): -Mathf.Abs(transform.localScale.x);
+        transform.localScale = new(scale, transform.localScale.y, transform.localScale.z);
+        StartCoroutine(StopControl());
+        StartCoroutine(Invencibility());
+    }
+
+    IEnumerator StopControl()
+    {
+        _canMove = false;
+        yield return new WaitForSeconds(_inminutyTime);
+        _canMove = true;
+    }
+
+    IEnumerator Invencibility()
+    {
+        playerStats._inminuty = true;
+        yield return new WaitForSeconds(_inminutyTime);
+        playerStats._inminuty = false;
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.Find("attackPoint").position, attackRange);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (triggering && collision.gameObject.CompareTag("Chest"))
+        {
+            triggering = false;
+            GameObject chest = collision.gameObject;
+            if (chest == null)
+            {
+                return;
+            }
+            chest.GetComponent<Chest>().Open();
+        }
+
+        if (triggering && collision.gameObject.CompareTag("Trigger"))
+        {
+            triggering = false;
+            GameObject trigger = collision.gameObject;
+            if (trigger.name == "Medieval_lever")
+            {
+                Lever medieval_lever = trigger.GetComponent<Lever>();
+                medieval_lever.Switch();
+            }
+        }
+    }
+
+    IEnumerator Triggering()
+    {
+        triggering = true;
+        yield return new WaitForSeconds(1);
+        triggering = false;
+    }
 }

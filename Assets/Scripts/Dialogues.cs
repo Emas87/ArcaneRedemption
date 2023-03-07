@@ -28,21 +28,24 @@ public class Dialogues : ScriptableObject
         };
         dialogue[3] = new string[] {
             "If you help me I'll help you",
-            "Thanks,\r\nNow you can attack by pressing left click.",
+            "Thanks,\r\nNow you can attack by pressing 'Left Click'.",
             "I'll follow you to get out of here."
         };
         dialogue[4] = new string[] {
-            "Please help me",
+            "If you help me I'll help you",
+            "Thanks,\r\nNow let me help you, You can open chests with 'Right Click'.",
             "I'll follow you to get out of here."
         };
         dialogue[5] = new string[] {
             "If you help me I'll help you",
+            "Be careful with the water, it slows you down",
             "Thanks, I'll follow you to get out of here",
             "Now Run!!!!!."
         };
         dialogue[6] = new string[] {
             "If you help me I'll help you",
-            "Thanks,\r\nNow die!!! hahaha.",
+            "Thanks,\r\nNow let me help you, You can use levers with 'Right Click'.",
+            "Now die!!! hahaha.",
         };
         dialogue[7] = new string[] {
             "If you help me I'll help you",
