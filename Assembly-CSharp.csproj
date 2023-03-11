@@ -59,7 +59,9 @@
     <Compile Include="Assets\Scripts\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\PlayerStats.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanTween.cs" />
+    <Compile Include="Assets\Scripts\Slime.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTDescr.cs" />
+    <Compile Include="Assets\Scripts\Key.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanTweenExt.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingUnitTests.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTSeq.cs" />
@@ -70,8 +72,10 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathBezier.cs" />
     <Compile Include="Assets\Scripts\Dialogues.cs" />
     <Compile Include="Assets\Scripts\BoulderManager.cs" />
+    <Compile Include="Assets\Scripts\BossDoor.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplines.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralEventsListeners.cs" />
+    <Compile Include="Assets\Scripts\SlimeBoss.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingZLegacy.cs" />
     <Compile Include="Assets\Hero Knight - Pixel Art\Demo\HeroKnight.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingZLegacyExt.cs" />
@@ -81,11 +85,15 @@
     <Compile Include="Assets\LeanTween\Framework\LTDescrOptional.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralEasingTypes.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSequencer.cs" />
+    <Compile Include="Assets\Scripts\TriggerTimer.cs" />
     <Compile Include="Assets\LeanTween\Examples\Archived\OldGUIExamplesCS.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\LogoCinematic.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralCameraShake.cs" />
+    <Compile Include="Assets\Scripts\DarkForestBackGround.cs" />
+    <Compile Include="Assets\Scripts\ActivePlatform.cs" />
     <Compile Include="Assets\LeanTween\Examples\Archived\TestingPunch.cs" />
     <Compile Include="Assets\Scripts\Skeleton.cs" />
+    <Compile Include="Assets\Scripts\Lever.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Hero Knight - Pixel Art\Demo\Sensor_HeroKnight.cs" />
@@ -105,13 +113,11 @@
     <Compile Include="Assets\Scripts\Liquid.cs" />
     <Compile Include="Assets\Scripts\Rescued.cs" />
     <Compile Include="Assets\Hero Knight - Pixel Art\Demo\DestroyEvent_HeroKnight.cs" />
+    <Compile Include="Assets\Scripts\SlimeSpawner.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasic.cs" />
+    <Compile Include="Assets\Scripts\MedievalDoor.cs" />
     <Compile Include="Assets\LeanTween\Examples\Archived\TestingRigidbodyCS.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
-    <Compile Include="Assets\Scripts\Lever.cs" />
-    <Compile Include="Assets\Scripts\MedievalDoor.cs" />
-    <Compile Include="Assets\Scripts\Key.cs" />
-    <Compile Include="Assets\Scripts\DarkForestBackGround.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

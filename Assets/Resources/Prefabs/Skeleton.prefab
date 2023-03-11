@@ -75,8 +75,9 @@ MonoBehaviour:
   life: 40
   experience: 1
   isRunning: 0
-  chasingDistance: 15
+  chasingDistance: 10
   jumpForce: 15
+  damage: 10
   _knockback: {x: 5, y: 5}
 --- !u!70 &1105089029
 CapsuleCollider2D:
@@ -91,8 +92,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0052223206, y: 0.040904045}
-  m_Size: {x: 0.594017, y: 0.9181919}
+  m_Offset: {x: -0.12691307, y: 0.22518063}
+  m_Size: {x: 0.628788, y: 0.8416996}
   m_Direction: 0
 --- !u!61 &4476640553323161437
 BoxCollider2D:
@@ -107,7 +108,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.390246, y: 0}
+  m_Offset: {x: 2.487358, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -118,7 +119,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3195086, y: 0.22993803}
+  m_Size: {x: 0.78009033, y: 0.22993803}
   m_EdgeRadius: 0
 --- !u!68 &4057805562566924663
 EdgeCollider2D:
@@ -136,9 +137,9 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.100141525, y: -0.45698}
-  - {x: -0.0056095123, y: -0.45698}
-  - {x: 0.10616684, y: -0.4572065}
+  - {x: -0.26703453, y: -0.23445725}
+  - {x: -0.15163994, y: -0.23445725}
+  - {x: -0.032909393, y: -0.2346847}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -185,7 +186,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2790212832745604583}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.11, y: 0.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -235,7 +236,7 @@ SpriteRenderer:
   m_SortingOrder: 11
   m_Sprite: {fileID: -743305798, guid: 93fc4aa8d1958bd48b10c978c5ff83cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1.0555556}

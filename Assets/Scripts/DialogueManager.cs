@@ -46,6 +46,9 @@ public class DialogueManager : MonoBehaviour
         activeMessage++;
         if(activeMessage < currentMessages.Length)
         {
+            if(activeMessage > 0 && currentTalking != null) {
+                currentTalking.Rescue();
+            }
             DisplayMessage();
         } else
         {

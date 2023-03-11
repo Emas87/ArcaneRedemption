@@ -5,21 +5,38 @@ using UnityEngine;
 
 public class Rescued : MonoBehaviour
 {
-    Dialogues dialogue;
 
     [SerializeField] int ownOrder = 0;
+
+    Dialogues dialogue;
+    bool rescued = false;
+    Animator animator;
 
 
     // Start is called before the first frame update
     void Start()
     {
         dialogue = ScriptableObject.CreateInstance<Dialogues>();
+        animator = GetComponent<Animator>();
+        if (animator == null )
+        {
+            Debug.LogError("No Animator in Rescued gameobject");
+            return;
+        }
+        animator.SetBool("rescued", rescued);
     }
 
     // Update is called once per frame
     void Update()
     {
+
                 
+    }
+
+    public void Rescue()
+    {
+        animator.SetBool("rescued", true);
+        transform.localScale = Vector3.one;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

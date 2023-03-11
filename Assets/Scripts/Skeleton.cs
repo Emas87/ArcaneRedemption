@@ -25,12 +25,16 @@ public class Skeleton : Enemy
 
     public override void Update()
     {
+        if (cinematic || DialogueManager.isActive)
+        {
+            return;
+        }
         base.Update();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player == null || player.GetComponent<PlayerStats>().isDead)
         {
             animator.SetBool("isAttacking", false);
-            animator.SetBool("isRunning", false);
+            animator.SetBool("running", false);
             return;
         }
         ShouldRun();
@@ -41,19 +45,22 @@ public class Skeleton : Enemy
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if (!attackCollider.IsTouchingLayers(LayerMask.GetMask("Player")))
+        if (!cinematic && !attackCollider.IsTouchingLayers(LayerMask.GetMask("Player")))
         {
             animator.SetBool("isAttacking", false);
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-
+        if (cinematic || DialogueManager.isActive)
+        {
+            return;
+        }
         if (feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && isJumping)
         {
             isJumping = false;
         }
-        animator.SetBool("isJumping", IsMoving()[1]);
+        animator.SetBool("jumping", IsMoving()[1]);
 
         // if front is sensing a wall and enemy is not in the air and player is not in attack range, then jump
         if (frontCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !isJumping && !attackCollider.IsTouchingLayers(LayerMask.GetMask("Player")))
@@ -70,6 +77,10 @@ public class Skeleton : Enemy
     }
     private void OnCollisionStay2D(Collision2D other)
     {
+        if (cinematic || DialogueManager.isActive)
+        {
+            return;
+        }
         if (IsDead())
         {
             return;

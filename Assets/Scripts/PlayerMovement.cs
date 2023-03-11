@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     PlayerStats playerStats;
     TrailRenderer myTrailRenderer;
     CapsuleCollider2D myCapsuleCollider;
+    public bool cinematic = false;
 
     [SerializeField] public float moveSpeed = 10;
     [SerializeField] float jumpSpeed = 25f;
@@ -32,10 +33,7 @@ public class PlayerMovement : MonoBehaviour
     int _currentAttack = 0;
     float _timeBetweenAttacks = 0.25f;
     bool _canMove = true;
-    float _inminutyTime = 0.5f;
-    bool triggering = false;
-
-
+    float _inmunityTime = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -81,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         if (playerStats.isDead){
             return;
         }
-        if (DialogueManager.isActive)
+        if (DialogueManager.isActive || cinematic)
         {
             // Stoping player to show dialogue
             myRigidBody.velocity = Vector2.zero;
@@ -96,9 +94,9 @@ public class PlayerMovement : MonoBehaviour
             Movement();
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
-            StartCoroutine(Triggering());
+            StartCoroutine(Attack());
         }
     }
     bool IsGrounded()
@@ -194,13 +192,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private void OnFire(InputValue value)
+    IEnumerator Attack()
     {
-        if (DialogueManager.isActive || playerStats.isDead)
-        {
-            return;
-        }
-        else if (_timeSinceAttack > _timeBetweenAttacks)
+        if (_timeSinceAttack > _timeBetweenAttacks)
         {
             // Animations
             _currentAttack++;
@@ -221,6 +215,7 @@ public class PlayerMovement : MonoBehaviour
 
             // Animation 2 hits faster
             float attackAnimationTime = _currentAttack == 2 ? 0.02f : 0.03f;
+            yield return new WaitForSeconds(attackAnimationTime);
 
             // Damages
             //Find if there is enemy in the range
@@ -230,16 +225,10 @@ public class PlayerMovement : MonoBehaviour
                 if (hitEnemy.GetType() == typeof(CapsuleCollider2D))
                 {
                     Vector2 direction = transform.position - hitEnemy.transform.position;
-                    StartCoroutine(Attack(attackAnimationTime));
                     hitEnemy.gameObject.GetComponent<Enemy>().OnHit(attackDamage, direction);
                 }
             }
         }
-    }
-
-    IEnumerator Attack(float delay)
-    {
-        yield return new WaitForSeconds(delay);
     }
 
     public void Knockback(Vector2 direction)
@@ -254,50 +243,20 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator StopControl()
     {
         _canMove = false;
-        yield return new WaitForSeconds(_inminutyTime);
+        yield return new WaitForSeconds(_inmunityTime);
         _canMove = true;
     }
 
     IEnumerator Invencibility()
     {
-        playerStats._inminuty = true;
-        yield return new WaitForSeconds(_inminutyTime);
-        playerStats._inminuty = false;
+        playerStats._inmunity = true;
+        yield return new WaitForSeconds(_inmunityTime);
+        playerStats._inmunity = false;
     }
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.Find("attackPoint").position, attackRange);
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (triggering && collision.gameObject.CompareTag("Chest"))
-        {
-            triggering = false;
-            GameObject chest = collision.gameObject;
-            if (chest == null)
-            {
-                return;
-            }
-            chest.GetComponent<Chest>().Open();
-        }
-
-        if (triggering && collision.gameObject.CompareTag("Trigger"))
-        {
-            triggering = false;
-            GameObject trigger = collision.gameObject;
-            if (trigger.name == "Medieval_lever")
-            {
-                Lever medieval_lever = trigger.GetComponent<Lever>();
-                medieval_lever.Switch();
-            }
-        }
-    }
-
-    IEnumerator Triggering()
-    {
-        triggering = true;
-        yield return new WaitForSeconds(1);
-        triggering = false;
-    }
+   
 }

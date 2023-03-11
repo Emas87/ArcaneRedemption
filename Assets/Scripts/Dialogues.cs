@@ -38,8 +38,8 @@ public class Dialogues : ScriptableObject
         };
         dialogue[5] = new string[] {
             "If you help me I'll help you",
-            "Be careful with the water, it slows you down",
-            "Thanks, I'll follow you to get out of here",
+            "Thanks, Be careful with the water, it slows you down",
+            "I'll follow you to get out of here",
             "Now Run!!!!!."
         };
         dialogue[6] = new string[] {
@@ -49,16 +49,13 @@ public class Dialogues : ScriptableObject
         };
         dialogue[7] = new string[] {
             "If you help me I'll help you",
-            "Thanks,\r\nNow you can dash with the 'Shift' key.",
+            "Thanks,\r\nNext platforms has a time limit, once you push the lever you wil have some seconds to cross them",
             "I'll follow you to get out of here."
         };
         dialogue[8] = new string[] {
-            "If you help me I'll help you",
-            "Thanks,\r\nNow you can step on the button to activate it.",
+            "Please help me",
+            "Thanks",
             "I'll follow you to get out of here."
-        };
-        dialogue[9] = new string[] {
-            "Thanks for saving us, as a thank you your death will be quick, hahaha"
         };
     }
 

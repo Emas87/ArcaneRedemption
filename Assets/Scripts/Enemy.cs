@@ -6,13 +6,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public bool cinematic = false;
+
     [SerializeField] protected int _speed = 3;
     [SerializeField] protected int life = 40;
     [SerializeField] protected int experience = 1;
     [SerializeField] protected bool isRunning = false;
-
     [SerializeField] protected float chasingDistance = 15;
-
     [SerializeField] protected float jumpForce = 25;
     [SerializeField] protected int damage = 10;
 
@@ -23,8 +23,8 @@ public class Enemy : MonoBehaviour
     protected float attackRate = 1;
     protected float _timeSinceAttack = 0f;
     protected bool _canMove = true;
-    protected bool _inminuty = false;
-    protected float _inminutyTime = 0.5f;
+    protected bool _inmunity = false;
+    protected float _inmunityTime = 0.5f;
     [SerializeField] 
     protected Vector2 _knockback = new(5, 5);
 
@@ -36,6 +36,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
+        if (cinematic || DialogueManager.isActive)
+        {
+            return;
+        }
         _timeSinceAttack += Time.deltaTime;
         if (IsDead())
         {
@@ -43,23 +47,23 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject, 1f);
             return;
         }
-        animator.SetBool("isRunning", isRunning);
-        animator.SetBool("isJumping", IsMoving()[1]);
+        animator.SetBool("running", isRunning);
+        animator.SetBool("jumping", IsMoving()[1]);
     }
 
     public virtual void Fly() { 
     }
     public virtual void OnHit(int damage, Vector2 direction) {
-        if (!IsDead() && !_inminuty)
+        if ( !cinematic && !IsDead() && !_inmunity)
         {
             life -= damage;
             Debug.Log(life);
-            animator.SetTrigger("onHit");
+            animator.SetTrigger("hit");
             Knockback(direction);
         }
     }
     public virtual void OnDead() { 
-        animator.SetTrigger("isDead");
+        animator.SetTrigger("dead");
     }
     public virtual void OnAttack(int damage, Vector2 direction) {
         if (_timeSinceAttack > attackRate)
@@ -83,7 +87,7 @@ public class Enemy : MonoBehaviour
     }
     public virtual void Jump()
     {
-        if (!IsDead() && IsGrounded())
+        if (!cinematic && !IsDead() && IsGrounded())
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isJumping = true;
@@ -97,7 +101,7 @@ public class Enemy : MonoBehaviour
     }
     public virtual void Run()
     {
-        if (!IsDead() && _canMove)
+        if (!cinematic && !IsDead() && _canMove)
         {
             // IA to move closer to the player
             GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -110,11 +114,11 @@ public class Enemy : MonoBehaviour
             if (direction.x > 0.1)
             {
                 transform.Translate(_speed * Time.deltaTime, 0, 0);
-                transform.localScale = new(-1 * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.x);
+                transform.localScale = new(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.x);
             }
             if (direction.x < -0.1)
             {
-                transform.localScale = new(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.x);
+                transform.localScale = new(-1 * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.x);
                 transform.Translate(-_speed * Time.deltaTime, 0, 0);
             }
         }
@@ -139,7 +143,7 @@ public class Enemy : MonoBehaviour
     public virtual void Knockback(Vector2 direction)
     {
         rb.velocity = new(-_knockback.x * direction.x, _knockback.y);
-        float scale = direction.x > 0 ? -Mathf.Abs(transform.localScale.x) : Mathf.Abs(transform.localScale.x);
+        float scale = direction.x > 0 ? Mathf.Abs(transform.localScale.x) : -Mathf.Abs(transform.localScale.x);
         transform.localScale = new(scale, transform.localScale.y, transform.localScale.z);
         StartCoroutine(StopControl());
         StartCoroutine(Invencibility());
@@ -148,13 +152,13 @@ public class Enemy : MonoBehaviour
     IEnumerator StopControl()
     {
         _canMove = false;
-        yield return new WaitForSeconds(_inminutyTime);
+        yield return new WaitForSeconds(_inmunityTime);
         _canMove = true;
     }
     IEnumerator Invencibility()
     {
-        _inminuty = true;
-        yield return new WaitForSeconds(_inminutyTime);
-        _inminuty = false;
+        _inmunity = true;
+        yield return new WaitForSeconds(_inmunityTime);
+        _inmunity = false;
     }
 }

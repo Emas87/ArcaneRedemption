@@ -5,12 +5,11 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     //script for store/managing exp, hp etc...
-    // Start is called before the first frame update
     public float healthPointsCapacity = 5;
     public float healthPoints = 5;
     public int resistence = 0;
     public int strength = 1;
-    public bool _inminuty = false;
+    public bool _inmunity = false;
 
     [SerializeField] public bool isDead = false;
     [SerializeField] public bool hasKey = false;
@@ -23,8 +22,6 @@ public class PlayerStats : MonoBehaviour
     private int experience = 0;
     private Animator _animator;
     private PlayerMovement playerMovement;
-    float _inminutyTime = 0.5f;
-
 
     void Start()
     {
@@ -35,11 +32,11 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(hasKey);
+        
     }
     public void receiveDamage(float incomingDmg, Vector2 direction){
 
-        if (!_inminuty)
+        if (!_inmunity)
         {
             healthPoints -= (incomingDmg - resistence);
             if (healthPoints <= 0f)
