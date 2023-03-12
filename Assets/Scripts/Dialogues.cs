@@ -12,8 +12,9 @@ public class Dialogues : ScriptableObject
     {
         // Initialize data
         dialogue[0] = new string[] {
-            "Hey wake up, I need your help\r\n.....\r\nI need you to unlock my chains, if you do so I'll help with yours\r\n",
-            "Thanks, here you go \r\n .... \r\nNow you can move try using keys 'A' and 'D' to move left and right respectively.",
+            "Hey wake up, I need your help\r\n.....\r\nI need you to set me free, if you do so I'll help you\r\n",
+            "Thanks, here you go \r\n ....",
+            "Now you can move try using keys 'A' and 'D' to move left and right respectively.",
             "I'll follow you to get out of here."
         };
         dialogue[1] = new string[] {
@@ -45,7 +46,7 @@ public class Dialogues : ScriptableObject
         dialogue[6] = new string[] {
             "If you help me I'll help you",
             "Thanks,\r\nNow let me help you, You can use levers with 'Right Click'.",
-            "Now die!!! hahaha.",
+            "Now be carefull!!!",
         };
         dialogue[7] = new string[] {
             "If you help me I'll help you",

@@ -36,7 +36,8 @@ public class MedievalDoor : MonoBehaviour
             skeleton = Resources.Load<GameObject>("Prefabs/Skeleton");
         }
         Vector3 spawnPosition = new(transform.position.x, transform.position.y - 1, transform.position.z);
-        Instantiate(skeleton, spawnPosition, transform.rotation);
+        GameObject tempSkeleton = Instantiate(skeleton, spawnPosition, transform.rotation);
+        tempSkeleton.GetComponent<Skeleton>().chasingDistance = 20;
     }
 
     public void Switch()

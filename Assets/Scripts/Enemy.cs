@@ -7,12 +7,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public bool cinematic = false;
+    public float chasingDistance = 15;
 
     [SerializeField] protected int _speed = 3;
     [SerializeField] protected int life = 40;
     [SerializeField] protected int experience = 1;
     [SerializeField] protected bool isRunning = false;
-    [SerializeField] protected float chasingDistance = 15;
     [SerializeField] protected float jumpForce = 25;
     [SerializeField] protected int damage = 10;
 

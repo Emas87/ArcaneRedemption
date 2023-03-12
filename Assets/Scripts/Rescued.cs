@@ -1,4 +1,4 @@
-using System;
+    using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -68,6 +68,20 @@ public class Rescued : MonoBehaviour
                 {
                     Lever leverManager = trigger.GetComponent<Lever>();
                     leverManager.Switch();
+                }
+            }
+        }
+    }
+
+    public void SpecialAction(int indexMessage)
+    {
+        if (ownOrder == 0 && indexMessage == 2) {
+            GameObject[] triggers = GameObject.FindGameObjectsWithTag("Trigger");
+            foreach (GameObject trigger in triggers)
+            {
+                if (trigger.name == "chains")
+                {
+                    Destroy(trigger);
                 }
             }
         }

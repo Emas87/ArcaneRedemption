@@ -50,6 +50,7 @@ public class DialogueManager : MonoBehaviour
                 currentTalking.Rescue();
             }
             DisplayMessage();
+            currentTalking.SpecialAction(activeMessage);
         } else
         {
             isActive = false;

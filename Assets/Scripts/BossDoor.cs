@@ -13,6 +13,9 @@ public class BossDoor : MonoBehaviour
             PlayerMovement player = FindObjectOfType<PlayerMovement>();
             player.cinematic = true;
 
+            SlimeBoss boss = FindObjectOfType<SlimeBoss>();
+            boss.cinematic = true;
+
             PlayableDirector[] directors = FindObjectsOfType<PlayableDirector>();
             foreach (var director in directors)
             {
@@ -29,6 +32,8 @@ public class BossDoor : MonoBehaviour
     {
         PlayerMovement player = FindObjectOfType<PlayerMovement>();
         player.cinematic = false;
+        SlimeBoss boss = FindObjectOfType<SlimeBoss>();
+        boss.cinematic = false;
         PlayableDirector[] directors = FindObjectsOfType<PlayableDirector>();
         foreach (var director in directors)
         {
