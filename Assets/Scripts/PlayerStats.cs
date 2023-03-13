@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     //script for store/managing exp, hp etc...
-    public float healthPointsCapacity = 5;
-    public float healthPoints = 5;
+    public float healthPointsCapacity = 100;
+    public float healthPoints = 100;
     public int resistence = 0;
     public int strength = 1;
     public bool _inmunity = false;
@@ -27,6 +27,7 @@ public class PlayerStats : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
+        healthPoints = FindObjectOfType<GameSession>().playerHealthPoints;
     }
 
     // Update is called once per frame
@@ -39,12 +40,14 @@ public class PlayerStats : MonoBehaviour
         if (!_inmunity)
         {
             healthPoints -= (incomingDmg - resistence);
+            FindObjectOfType<GameSession>().playerHealthPoints = healthPoints;
             if (healthPoints <= 0f)
             {
                 isDead = true;
                 Destroy(gameObject, 2f);
                 _animator.SetBool("noBlood", false);
                 _animator.SetBool("Death", true);
+                FindObjectOfType<GameSession>().ProcessPlayerDeath();
             }
             else
             {

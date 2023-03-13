@@ -15,7 +15,7 @@ public class IntroBehavior : StateMachineBehaviour
             animator.SetTrigger("idle");
             return;
         }
-        rand = Random.Range(0, 2);
+        rand = Random.Range(0, 3);
         if (rand == 0)
         {
             animator.SetTrigger("idle");
@@ -23,6 +23,10 @@ public class IntroBehavior : StateMachineBehaviour
         else if (rand == 1)
         {
             animator.SetTrigger("jumping");
+        }
+        else if (rand == 1)
+        {
+            animator.SetTrigger("running");
         }
     }
 

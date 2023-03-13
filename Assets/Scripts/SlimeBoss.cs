@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class SlimeBoss : MonoBehaviour
 {
-    BoxCollider2D frontCollider;
-    EdgeCollider2D feetCollider;
     CapsuleCollider2D bodyCollider;
-    CircleCollider2D attackCollider;
 
     public bool cinematic = false;
-    public float chasingDistance = 15;
 
-    [SerializeField] private int life = 40;
+    [SerializeField] private int life = 200;
     [SerializeField] private int damage = 10;
     [SerializeField] private int _speed = 7;
 
@@ -23,10 +19,8 @@ public class SlimeBoss : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        feetCollider = GetComponent<EdgeCollider2D>();
         bodyCollider = GetComponent<CapsuleCollider2D>();
         animator = GetComponentInChildren<Animator>();
-        attackCollider = GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame
@@ -40,23 +34,32 @@ public class SlimeBoss : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player == null || player.GetComponent<PlayerStats>().isDead)
         {
-            animator.SetBool("running", false);
+            return;
+        }
+        if (life < 0)
+        {
+            animator.SetTrigger("dead");
+            Destroy(gameObject, 1f);
             return;
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (cinematic || DialogueManager.isActive)
         {
             return;
         }
 
-        if (attackCollider.IsTouchingLayers(LayerMask.GetMask("Player")))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            animator.SetTrigger("attacking");
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                player.GetComponent<PlayerStats>().receiveDamage(damage, collision.GetContact(0).normal);
+            }
         }
     }
+
     public void moveToPlayer()
     {
         Vector2 playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
@@ -73,5 +76,10 @@ public class SlimeBoss : MonoBehaviour
         {
             transform.localScale = new(-1 * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.x);
         }
+    }
+
+    public void OnHit(int attackDamage)
+    {
+        life -= damage;        
     }
 }

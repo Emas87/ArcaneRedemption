@@ -225,7 +225,10 @@ public class PlayerMovement : MonoBehaviour
                 if (hitEnemy.GetType() == typeof(CapsuleCollider2D))
                 {
                     Vector2 direction = transform.position - hitEnemy.transform.position;
-                    hitEnemy.gameObject.GetComponent<Enemy>().OnHit(attackDamage, direction);
+                    Enemy enemy = hitEnemy.gameObject.GetComponent<Enemy>();
+                    if (enemy != null) enemy.OnHit(attackDamage, direction);
+                    SlimeBoss slimeBoss = hitEnemy.gameObject.GetComponent<SlimeBoss>();
+                    if (slimeBoss != null) slimeBoss.OnHit(attackDamage);
                 }
             }
         }

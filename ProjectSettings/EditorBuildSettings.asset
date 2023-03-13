@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/EnemyScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Level1.unity
+    guid: 2e1d3d521850c5b49a5e0aa411a84005
+  - enabled: 1
+    path: Assets/Level2/Scenes/Level2.unity
+    guid: ff291b87d4da67343bd17d2204b33424
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 83592b01381cb144cb713f2dcf8d0c66, type: 2}

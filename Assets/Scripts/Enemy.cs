@@ -71,11 +71,10 @@ public class Enemy : MonoBehaviour
             // Reset timer
             _timeSinceAttack = 0.0f;
             GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player == null)
+            if (player != null)
             {
-                return;
+                player.GetComponent<PlayerStats>().receiveDamage(damage, direction);
             }
-            player.GetComponent<PlayerStats>().receiveDamage(damage, direction);
         }
     }
     public virtual bool[] IsMoving()

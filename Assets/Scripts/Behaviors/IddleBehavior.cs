@@ -22,7 +22,15 @@ public class IddleBehavior : StateMachineBehaviour
         }
         if (timer <= 0)
         {
-            animator.SetTrigger("jumping");
+            int rand = Random.Range(0, 2);
+            if (rand == 0)
+            {
+                animator.SetTrigger("running");
+            }
+            else if (rand == 1)
+            {
+                animator.SetTrigger("jumping");
+            }
         }
         else
         {
