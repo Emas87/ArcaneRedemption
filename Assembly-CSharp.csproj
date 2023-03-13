@@ -74,6 +74,7 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathBezier.cs" />
     <Compile Include="Assets\Scripts\Dialogues.cs" />
     <Compile Include="Assets\Scripts\BoulderManager.cs" />
+    <Compile Include="Assets\Scripts\ScenePersist.cs" />
     <Compile Include="Assets\Scripts\BossDoor.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplines.cs" />
     <Compile Include="Assets\Scripts\Behaviors\IntroBehavior.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Hero Knight - Pixel Art\Demo\Sensor_HeroKnight.cs" />
+    <Compile Include="Assets\Scripts\MenuScroller.cs" />
     <Compile Include="Assets\Scripts\Pikes.cs" />
     <Compile Include="Assets\Scripts\Chest.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSpline.cs" />
@@ -114,18 +116,17 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSpline2d.cs" />
     <Compile Include="Assets\Scripts\VampireHabilities.cs" />
     <Compile Include="Assets\Scripts\LevelExit.cs" />
+    <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplinePerformance.cs" />
     <Compile Include="Assets\Scripts\Liquid.cs" />
     <Compile Include="Assets\Scripts\Rescued.cs" />
     <Compile Include="Assets\Hero Knight - Pixel Art\Demo\DestroyEvent_HeroKnight.cs" />
     <Compile Include="Assets\Scripts\SlimeSpawner.cs" />
+    <Compile Include="Assets\Scripts\GameSession.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasic.cs" />
     <Compile Include="Assets\Scripts\MedievalDoor.cs" />
     <Compile Include="Assets\LeanTween\Examples\Archived\TestingRigidbodyCS.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
-    <Compile Include="Assets\Scripts\GameSession.cs" />
-    <Compile Include="Assets\Scripts\ScenePersist.cs" />
-    <Compile Include="Assets\Scripts\Health.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

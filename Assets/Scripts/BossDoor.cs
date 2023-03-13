@@ -6,10 +6,13 @@ using UnityEngine.Playables;
 public class BossDoor : MonoBehaviour
 {
     public Animator camAnim;
+    bool started = false;
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && ! started)
         {
+            started = true;
             PlayerMovement player = FindObjectOfType<PlayerMovement>();
             player.cinematic = true;
 
@@ -34,6 +37,7 @@ public class BossDoor : MonoBehaviour
         player.cinematic = false;
         SlimeBoss boss = FindObjectOfType<SlimeBoss>();
         boss.cinematic = false;
+        boss.StartAction();
         PlayableDirector[] directors = FindObjectsOfType<PlayableDirector>();
         foreach (var director in directors)
         {
@@ -43,5 +47,6 @@ public class BossDoor : MonoBehaviour
             }
         }
         GetComponent<BoxCollider2D>().enabled = false;
+
     }
 }

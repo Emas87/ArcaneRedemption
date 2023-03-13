@@ -19,7 +19,10 @@ public class GameSession : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject);
         }
-        playerHealthPoints = FindObjectOfType<PlayerStats>().healthPointsCapacity;
+        if (FindObjectOfType<PlayerStats>() != null)
+        {
+            playerHealthPoints = FindObjectOfType<PlayerStats>().healthPointsCapacity;
+        }
     }
 
     // Update is called once per frame
@@ -30,13 +33,29 @@ public class GameSession : MonoBehaviour
 
     public void ProcessPlayerDeath()
     {
-        GameOver();
+        //GameOver();
+        // TODO change this to go to the last checkpoint
 
     }
-    
-    void GameOver()
+
+    public void GameOver()
     {
-        FindObjectOfType<ScenePersist>().Reset();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        // Player finishes the game
+        //FindObjectOfType<ScenePersist>().Reset();
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("GameOver");
+    }
+
+    public void LoadMenu()
+    {
+        // Player finishes the game
+        //FindObjectOfType<ScenePersist>().Reset();
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void QuitGame() {
+        Debug.Log("Quiting Game");
+        Application.Quit();
     }
 }
