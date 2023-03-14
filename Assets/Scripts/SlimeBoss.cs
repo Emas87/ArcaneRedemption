@@ -95,4 +95,12 @@ public class SlimeBoss : MonoBehaviour
         life -= damage;
         bossLife.value = life*100/lifeCapacity;
     }
+
+    public void Reset()
+    {
+        life = lifeCapacity;
+        gameObject.SetActive(false);
+        bossLife.gameObject.SetActive(false);
+        transform.localScale = Vector2.one;
+    }
 }

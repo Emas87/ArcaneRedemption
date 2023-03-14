@@ -1,4 +1,4 @@
-    using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +6,7 @@ using UnityEngine;
 public class Rescued : MonoBehaviour
 {
 
-    [SerializeField] int ownOrder = 0;
+    public int ownOrder = 0;
 
     Dialogues dialogue;
     bool rescued = false;

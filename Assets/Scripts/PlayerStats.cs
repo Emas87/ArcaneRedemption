@@ -10,14 +10,14 @@ public class PlayerStats : MonoBehaviour
     public int resistence = 0;
     public int strength = 1;
     public bool _inmunity = false;
+    public bool isDead = false;
+    public bool hasKey = false;
+    public bool doubleJumpHability = true;
+    public bool dashHability = true;
+    public bool wolfHability = false;
+    public bool vampHability = false;
 
-    [SerializeField] public bool isDead = false;
-    [SerializeField] public bool hasKey = false;
-    [SerializeField] public bool doubleJumpHability = true;
-    [SerializeField] public bool dashHability = true;
-    [SerializeField] public bool wolfHability = false;
-    [SerializeField] public bool vampHability = false;
-
+    [SerializeField] Vector2 spawnPoint= Vector2.zero;
 
     private int experience = 0;
     private Animator _animator;
@@ -28,6 +28,7 @@ public class PlayerStats : MonoBehaviour
         _animator = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
         healthPoints = FindObjectOfType<GameSession>().playerHealthPoints;
+        transform.position = spawnPoint;
     }
 
     // Update is called once per frame
@@ -37,16 +38,16 @@ public class PlayerStats : MonoBehaviour
     }
     public void receiveDamage(float incomingDmg, Vector2 direction){
 
-        if (!_inmunity)
+        if (!_inmunity && !isDead)
         {
             healthPoints -= (incomingDmg - resistence);
             FindObjectOfType<GameSession>().playerHealthPoints = healthPoints;
             if (healthPoints <= 0f)
             {
                 isDead = true;
-                Destroy(gameObject, 2f);
+                //Destroy(gameObject, 2f);
                 _animator.SetBool("noBlood", false);
-                _animator.SetBool("Death", true);
+                _animator.SetTrigger("Death");
                 FindObjectOfType<GameSession>().ProcessPlayerDeath();
             }
             else
@@ -64,6 +65,20 @@ public class PlayerStats : MonoBehaviour
 
     public void removeKey(){
         hasKey = false;
+    }
+
+    public void SetSpawnPoint(Vector2 newPoint)
+    {
+        spawnPoint = newPoint;
+    }
+    public Vector2 GetSpawnPoint()
+    {
+        return spawnPoint;
+    }
+
+    public void ResetPlayer()
+    {
+        healthPoints = healthPointsCapacity;
     }
 
 }

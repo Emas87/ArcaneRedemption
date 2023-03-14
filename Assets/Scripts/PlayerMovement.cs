@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     CapsuleCollider2D myCapsuleCollider;
     public bool cinematic = false;
 
-    [SerializeField] public float moveSpeed = 10;
+    public float moveSpeed = 10;
     [SerializeField] float jumpSpeed = 25f;
     [SerializeField] float dashSpeed = 16f;
     [SerializeField] float dashTime = 0.18f;
@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private int attackDamage = 10;
     [SerializeField] Vector2 _knockback = new(10,10);
 
-    private Animator _animator;
+    public Animator _animator;
     float dashCoolDownTime = 0.15f;
     bool dashCoolDownActive = false;
     bool canDash = true; // put on true when landing on something
@@ -261,5 +261,4 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawWireSphere(transform.Find("attackPoint").position, attackRange);
     }
 
-   
 }

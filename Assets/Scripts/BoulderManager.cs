@@ -30,4 +30,16 @@ public class BoulderManager : MonoBehaviour
         boulder.running = true;
         GetComponent<CapsuleCollider2D>().enabled = false;
     }
+
+    public void ResetBoulder()
+    {
+        Boulder boulder = FindObjectOfType<Boulder>();
+        boulder.running = false;
+        boulder.transform.position = boulder.spawnPosition;
+        CapsuleCollider2D collider = GetComponent<CapsuleCollider2D>();
+        if(collider != null)
+        {
+            collider.enabled = true;
+        }
+    }
 }

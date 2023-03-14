@@ -36,10 +36,20 @@ public class DialogueManager : MonoBehaviour
     }
     void DisplayMessage()
     {
-        if (message != null) {
-            message.text = currentMessages[activeMessage];
-            AnimateTextColor();
+        try
+        {
+            if (message != null)
+            {
+                message.text = currentMessages[activeMessage];
+                AnimateTextColor();
+            }
         }
+        catch (System.NullReferenceException)
+        {
+
+            throw;
+        }
+        
     }
 
     public void NextMessage() { 
@@ -62,7 +72,7 @@ public class DialogueManager : MonoBehaviour
             if (currentTalking != null)
             {
                 currentTalking.DestroyRescued();
-                Destroy(currentTalking.gameObject);
+                currentTalking.gameObject.SetActive(false);
             }
         }
     }

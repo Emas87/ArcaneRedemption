@@ -11,6 +11,8 @@ public class Boulder : MonoBehaviour
     [SerializeField]
     int boulderDamage = 50;
     public bool running = true;
+    public Vector2 spawnPosition;
+
 
     // Start is called before the first frame update
     void Start()

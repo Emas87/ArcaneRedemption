@@ -27,18 +27,53 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ProcessPlayerDeath()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        //GameOver();
-        // TODO change this to go to the last checkpoint
+        StartCoroutine(Respawn());
+    }
 
+    IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(2);
+        PlayerMovement movement = FindObjectOfType<PlayerMovement>();
+        PlayerStats stats = FindObjectOfType<PlayerStats>();
+        movement._animator.SetTrigger("Respawn");
+        stats.ResetPlayer();
+        stats.isDead = false;
+        stats.transform.position = stats.GetSpawnPoint();
+        ResetWorld();
+    }
+
+    private void ResetWorld()
+    {
+        switch (Checkpoint.checkpointInstance)
+        {
+            case 3:
+                // restore Boulder and rescued
+                foreach (BoulderManager boulderManager in FindObjectsOfType<BoulderManager>())
+                {
+                    boulderManager.ResetBoulder();
+                } 
+
+                foreach (Rescued rescued in FindObjectsOfType<Rescued>(true))
+                {
+                    if(rescued.ownOrder == 5)
+                    {
+                        rescued.gameObject.SetActive(true);
+                    }
+                }
+                break;
+            case 6:
+                // Restore Boss
+                FindObjectOfType<SlimeBoss>().Reset();
+
+                // Disable blocks
+                // Enable Boss trigger
+                FindObjectOfType<BossDoor>().Reset();
+                break;
+        }
+                
+        
     }
 
     public void StartGame()

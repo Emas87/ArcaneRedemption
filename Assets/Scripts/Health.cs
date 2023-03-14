@@ -42,7 +42,7 @@ public class Health : MonoBehaviour
                 image.enabled = false;
                 
             }            
-            else if(i > health)
+            else if(i >= health)
             {
                 // empty hearth
                 image.texture = empty;

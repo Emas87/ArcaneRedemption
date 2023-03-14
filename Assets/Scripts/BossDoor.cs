@@ -19,7 +19,7 @@ public class BossDoor : MonoBehaviour
             PlayerMovement player = FindObjectOfType<PlayerMovement>();
             player.cinematic = true;
 
-            SlimeBoss boss = FindObjectOfType<SlimeBoss>();
+            SlimeBoss boss = FindObjectOfType<SlimeBoss>(true);
             boss.cinematic = true;
 
             PlayableDirector[] directors = FindObjectsOfType<PlayableDirector>();
@@ -53,5 +53,12 @@ public class BossDoor : MonoBehaviour
         // Activate blocks that stop player from getting out of the room
         blocks.SetActive(true);
 
+    }
+
+    public void Reset()
+    {
+        started = false;
+        blocks.SetActive(false);
+        GetComponent<BoxCollider2D>().enabled = true;
     }
 }
