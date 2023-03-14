@@ -50,14 +50,20 @@ public class DialogueManager : MonoBehaviour
                 currentTalking.Rescue();
             }
             DisplayMessage();
-            currentTalking.SpecialAction(activeMessage);
+            if(currentTalking != null)
+            {
+                currentTalking.SpecialAction(activeMessage);
+            }
         } else
         {
             isActive = false;
             transform.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();
             // Destroy rescued
-            currentTalking.DestroyRescued();
-            Destroy(currentTalking.gameObject);
+            if (currentTalking != null)
+            {
+                currentTalking.DestroyRescued();
+                Destroy(currentTalking.gameObject);
+            }
         }
     }
     void AnimateTextColor()

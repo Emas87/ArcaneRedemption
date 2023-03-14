@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class GameSession : MonoBehaviour
         int numberSessions = FindObjectsOfType<GameSession>().Length;
         if (numberSessions > 1)
         {
+            gameObject.SetActive(false);
             Destroy(gameObject);
         } else
         {
@@ -38,6 +40,19 @@ public class GameSession : MonoBehaviour
 
     }
 
+    public void StartGame()
+    {
+        // From menu Start button
+       StartCoroutine(WaitLoad(1));
+    }
+
+    IEnumerator WaitLoad(float wait)
+    {
+        yield return new WaitForSeconds(wait);
+        Destroy(gameObject);
+        SceneManager.LoadScene("Level1");
+    }
+
     public void GameOver()
     {
         // Player finishes the game
@@ -51,6 +66,7 @@ public class GameSession : MonoBehaviour
         // Player finishes the game
         //FindObjectOfType<ScenePersist>().Reset();
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Destroy(gameObject);
         SceneManager.LoadScene("Menu");
     }
 

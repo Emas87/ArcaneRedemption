@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Behaviors\IddleBehavior.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingUnitTests.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTSeq.cs" />
+    <Compile Include="Assets\Scripts\IntroSpeech.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralUISpace.cs" />
     <Compile Include="Assets\Scripts\Boulder.cs" />
     <Compile Include="Assets\Scripts\Behaviors\JumpyBehavior.cs" />

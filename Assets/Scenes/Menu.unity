@@ -206,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 62168543}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 705404615}
+        m_TargetAssemblyTypeName: GameSession, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &62168543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,7 +548,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 566095157}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 705404615}
+        m_TargetAssemblyTypeName: GameSession, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &566095157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -742,6 +766,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeedx: 0.1
+--- !u!114 &705404615 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8069093574311311895, guid: 1fc1e247d4f803b479a6b63fa855d6ff, type: 3}
+  m_PrefabInstance: {fileID: 636119952}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 858c2929a2eea074592bc2a092a39502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &881169605
 GameObject:
   m_ObjectHideFlags: 0
