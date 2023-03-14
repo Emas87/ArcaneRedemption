@@ -14,6 +14,7 @@ public class SlimeBoss : MonoBehaviour
     [SerializeField] private int damage = 10;
     [SerializeField] private int _speed = 7;
     [SerializeField] Slider bossLife;
+    [SerializeField] GameObject blocks;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -43,6 +44,7 @@ public class SlimeBoss : MonoBehaviour
         {
             animator.SetTrigger("dead");
             Destroy(gameObject, 1f);
+            blocks.SetActive(false);
             return;
         }
     }

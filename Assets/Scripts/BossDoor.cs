@@ -7,7 +7,10 @@ public class BossDoor : MonoBehaviour
 {
     public Animator camAnim;
     bool started = false;
-    
+
+    [SerializeField] GameObject blocks;
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && ! started)
@@ -47,6 +50,8 @@ public class BossDoor : MonoBehaviour
             }
         }
         GetComponent<BoxCollider2D>().enabled = false;
+        // Activate blocks that stop player from getting out of the room
+        blocks.SetActive(true);
 
     }
 }

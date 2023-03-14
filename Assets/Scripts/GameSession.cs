@@ -35,6 +35,7 @@ public class GameSession : MonoBehaviour
 
     public void ProcessPlayerDeath()
     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         //GameOver();
         // TODO change this to go to the last checkpoint
 
