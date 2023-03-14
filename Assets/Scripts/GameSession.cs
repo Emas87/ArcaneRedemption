@@ -43,14 +43,15 @@ public class GameSession : MonoBehaviour
     public void StartGame()
     {
         // From menu Start button
-       StartCoroutine(WaitLoad(1));
+       StartCoroutine(WaitLoad(1, "Intro"));
     }
 
-    IEnumerator WaitLoad(float wait)
+    IEnumerator WaitLoad(float wait, string scene)
     {
         yield return new WaitForSeconds(wait);
         Destroy(gameObject);
-        SceneManager.LoadScene("Level1");
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(scene);
     }
 
     public void GameOver()
@@ -73,5 +74,10 @@ public class GameSession : MonoBehaviour
     public void QuitGame() {
         Debug.Log("Quiting Game");
         Application.Quit();
+    }
+
+    public void OnIntroExit()
+    {
+        StartCoroutine(WaitLoad(0, "Level1"));
     }
 }

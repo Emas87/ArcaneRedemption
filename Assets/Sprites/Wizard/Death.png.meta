@@ -108,12 +108,12 @@ TextureImporter:
       name: Death_4
       rect:
         serializedVersion: 2
-        x: 858
-        y: 83
-        width: 97
-        height: 103
+        x: 1000
+        y: 0
+        width: 250
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,12 +129,12 @@ TextureImporter:
       name: Death_5
       rect:
         serializedVersion: 2
-        x: 1108
-        y: 83
-        width: 49
-        height: 110
+        x: 1250
+        y: 0
+        width: 250
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -150,12 +150,12 @@ TextureImporter:
       name: Death_6
       rect:
         serializedVersion: 2
-        x: 1358
-        y: 83
-        width: 96
-        height: 122
+        x: 1500
+        y: 0
+        width: 250
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,15 +168,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Death_7
+      name: Death_0
       rect:
         serializedVersion: 2
-        x: 108
-        y: 83
-        width: 45
-        height: 83
+        x: 0
+        y: 0
+        width: 250
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,15 +189,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Death_11
+      name: Death_2
       rect:
         serializedVersion: 2
-        x: 356
-        y: 83
-        width: 65
-        height: 93
+        x: 500
+        y: 0
+        width: 250
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -210,15 +210,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Death_15
+      name: Death_3
       rect:
         serializedVersion: 2
-        x: 608
-        y: 83
-        width: 72
-        height: 101
+        x: 750
+        y: 0
+        width: 250
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -231,22 +231,22 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Death_18
+      name: Death_1
       rect:
         serializedVersion: 2
-        x: 1608
-        y: 83
-        width: 105
-        height: 13
+        x: 250
+        y: 0
+        width: 250
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 403d39b2f0d25ba4ab90141841a74909
-      internalID: -987852395
+      spriteID: b3eecbbc5a003204fa35f046dbf22fef
+      internalID: -326533468
       vertices: []
       indices: 
       edges: []
@@ -262,25 +262,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Death_7: 1003719825
-      Death_10: 173974927
-      Death_15: 291411021
-      Death_1: 1384296553
+      Death_1: -326533468
       Death_5: 2142525173
-      Death_17: 1867564112
-      Death_0: 1790461833
+      Death_0: 1003719825
       Death_4: -556668139
-      Death_11: 1091298190
-      Death_14: 1115609245
-      Death_2: 893866573
-      Death_13: -555124
-      Death_9: 870220246
+      Death_2: 1091298190
       Death_6: 650753519
-      Death_12: 2006033820
-      Death_16: -1311906326
-      Death_18: -987852395
-      Death_8: 807405420
-      Death_3: 61672787
+      Death_3: 291411021
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

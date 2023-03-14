@@ -108,12 +108,12 @@ TextureImporter:
       name: Take hit_0
       rect:
         serializedVersion: 2
-        x: 106
-        y: 83
-        width: 45
-        height: 87
+        x: 0
+        y: 0
+        width: 250
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,12 +129,12 @@ TextureImporter:
       name: Take hit_1
       rect:
         serializedVersion: 2
-        x: 358
-        y: 83
-        width: 34
-        height: 86
+        x: 250
+        y: 0
+        width: 250
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -150,12 +150,12 @@ TextureImporter:
       name: Take hit_2
       rect:
         serializedVersion: 2
-        x: 608
-        y: 83
-        width: 35
-        height: 80
+        x: 500
+        y: 0
+        width: 250
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

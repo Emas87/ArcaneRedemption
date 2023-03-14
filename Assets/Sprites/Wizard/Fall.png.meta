@@ -108,12 +108,12 @@ TextureImporter:
       name: Fall_0
       rect:
         serializedVersion: 2
-        x: 107
-        y: 83
-        width: 65
-        height: 86
+        x: 0
+        y: 0
+        width: 250
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -126,22 +126,22 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fall_2
+      name: Fall_1
       rect:
         serializedVersion: 2
-        x: 356
-        y: 83
-        width: 66
-        height: 93
+        x: 250
+        y: 0
+        width: 250
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fffe2f3c52d1bd04880824625824f6a0
-      internalID: 56227163
+      spriteID: 656b3e990ad7b3f4d9ed0ea535fbec7e
+      internalID: 562639406
       vertices: []
       indices: 
       edges: []
@@ -158,9 +158,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Fall_1: 562639406
-      Fall_3: -1362415809
       Fall_0: 123600055
-      Fall_2: 56227163
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
