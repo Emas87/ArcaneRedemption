@@ -39,8 +39,7 @@ public class GameSession : MonoBehaviour
         PlayerStats stats = FindObjectOfType<PlayerStats>();
         movement._animator.SetTrigger("Respawn");
         stats.ResetPlayer();
-        stats.isDead = false;
-        stats.transform.position = stats.GetSpawnPoint();
+
         ResetWorld();
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
@@ -79,6 +80,8 @@ public class PlayerStats : MonoBehaviour
     public void ResetPlayer()
     {
         healthPoints = healthPointsCapacity;
+        isDead = false;
+        transform.position = spawnPoint;
     }
 
 }

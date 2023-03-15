@@ -1,0 +1,6 @@
+Audio:{
+	"Rise03" : "wobbleboxx.com"
+	"swish_2": "artisticdude"
+	"MENU B_Select": "Some of the sounds in this project were created by David McKee (ViRiX) soundcloud.com/virix"
+	"flaunch" : "Sounds (c) by Michel Baradari apollo-music.de"
+}

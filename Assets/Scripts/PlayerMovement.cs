@@ -7,13 +7,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {  
-    Rigidbody2D myRigidBody;
-    PlayerStats playerStats;
-    TrailRenderer myTrailRenderer;
-    CapsuleCollider2D myCapsuleCollider;
     public bool cinematic = false;
-
+    public Animator _animator;
     public float moveSpeed = 10;
+
     [SerializeField] float jumpSpeed = 25f;
     [SerializeField] float dashSpeed = 16f;
     [SerializeField] float dashTime = 0.18f;
@@ -21,7 +18,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private int attackDamage = 10;
     [SerializeField] Vector2 _knockback = new(10,10);
 
-    public Animator _animator;
+    Rigidbody2D myRigidBody;
+    PlayerStats playerStats;
+    TrailRenderer myTrailRenderer;
+    CapsuleCollider2D myCapsuleCollider;
     float dashCoolDownTime = 0.15f;
     bool dashCoolDownActive = false;
     bool canDash = true; // put on true when landing on something
@@ -34,18 +34,25 @@ public class PlayerMovement : MonoBehaviour
     float _timeBetweenAttacks = 0.25f;
     bool _canMove = true;
     float _inmunityTime = 0.5f;
+    AudioPlayer audioPlayer;
+    AudioSource audioSource;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
+        audioPlayer = FindObjectOfType<AudioPlayer>();
         _animator = GetComponent<Animator>();
         myRigidBody = GetComponent<Rigidbody2D>();
         myCapsuleCollider = GetComponent<CapsuleCollider2D>();
         playerStats = GetComponent<PlayerStats>();
         myTrailRenderer = GetComponent<TrailRenderer>();
-
+        audioSource = GetComponent<AudioSource>();
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
         _animator.SetBool("Grounded", true);
         _animator.SetBool("Death", false);
+        audioSource.volume = audioPlayer.volume;
     }
 
     // Update is called once per frame
@@ -65,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
         //Check if character just landed on the ground
         if (!_grounded && IsGrounded() && _DisableTimer <= 0)
         {
+            audioPlayer.PlayGround();
             _grounded = true;
             _animator.SetBool("Grounded", _grounded);
         }
@@ -121,11 +129,22 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new(-1 * Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             _animator.SetInteger("AnimState", 1);
+            if (_grounded && !audioSource.isPlaying)
+            {
+                GetComponent<AudioSource>().Play();
+            }
         }
         else if (myRigidBody.velocity.x > 0)
         {
             transform.localScale = new(Math.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             _animator.SetInteger("AnimState", 1);
+            if (_grounded && !audioSource.isPlaying)
+            {
+                GetComponent<AudioSource>().Play();
+            }
+        } else
+        {
+            GetComponent<AudioSource>().Stop();
         }
     }
 
@@ -142,6 +161,7 @@ public class PlayerMovement : MonoBehaviour
                         doubleJumpActive = true;
                     }
                     _animator.SetTrigger("Jump");
+                    audioPlayer.PlayJump();
                     _grounded = false;
                     _animator.SetBool("Grounded", _grounded);
                     _DisableTimer = 0.2f;
@@ -209,6 +229,7 @@ public class PlayerMovement : MonoBehaviour
 
             // Call one of three attack animations "Attack1", "Attack2", "Attack3"
             _animator.SetTrigger("Attack" + _currentAttack);
+            audioPlayer.PlayAttack();
 
             // Reset timer
             _timeSinceAttack = 0.0f;

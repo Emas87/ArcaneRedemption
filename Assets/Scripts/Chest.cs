@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Chest : MonoBehaviour
 {
     [SerializeField] Sprite open;
+    [SerializeField] GameObject content;
 
     BoxCollider2D proximity;
     ContactFilter2D contactFilter;
@@ -14,6 +17,10 @@ public class Chest : MonoBehaviour
     {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = open;
+        GameObject contentObject = Instantiate(content, new Vector3(transform.position.x, transform.position.y + 2, 0), transform.rotation);
+        Destroy(contentObject, 1f);
+
+        
     }
 
     private void Start()
@@ -29,6 +36,7 @@ public class Chest : MonoBehaviour
                 if (collider.gameObject.CompareTag("Player"))
                 {
                     Open();
+                    FindObjectOfType<AudioPlayer>().PlayChest();
                 }
             }
         }
