@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEngine.RuleTile.TilingRuleOutput;
@@ -13,8 +14,11 @@ public class Chest : MonoBehaviour
     ContactFilter2D contactFilter;
     List<Collider2D> colliders = new();
 
+    bool isOpen = false;
+
     public void Open()
     {
+        isOpen = true;
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = open;
         GameObject contentObject = Instantiate(content, new Vector3(transform.position.x, transform.position.y + 2, 0), transform.rotation);
@@ -24,6 +28,10 @@ public class Chest : MonoBehaviour
             FindObjectOfType<PlayerStats>().healthPointsCapacity += 20;
             FindObjectOfType<PlayerStats>().healthPoints += 20;
         }
+        if (contentObject.name.Contains("Slash"))
+        {
+            FindObjectOfType<PlayerMovement>().slashActive = true;
+        }
     }
 
     private void Start()
@@ -32,14 +40,17 @@ public class Chest : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1)) {
-            proximity.OverlapCollider(contactFilter, colliders);
-            foreach (var collider in colliders)
-            {
-                if (collider.gameObject.CompareTag("Player"))
+        if (!isOpen)
+        {
+            if (Input.GetMouseButtonDown(1)) {
+                proximity.OverlapCollider(contactFilter, colliders);
+                foreach (var collider in colliders)
                 {
-                    Open();
-                    FindObjectOfType<AudioPlayer>().PlayChest();
+                    if (collider.gameObject.CompareTag("Player"))
+                    {
+                        Open();
+                        FindObjectOfType<AudioPlayer>().PlayChest();
+                    }
                 }
             }
         }

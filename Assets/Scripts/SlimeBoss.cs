@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class SlimeBoss : MonoBehaviour
 {
-    CapsuleCollider2D bodyCollider;
-
     public bool cinematic = false;
 
     [SerializeField] private int life = 200;
@@ -15,15 +13,13 @@ public class SlimeBoss : MonoBehaviour
     [SerializeField] private int _speed = 7;
     [SerializeField] Slider bossLife;
     [SerializeField] GameObject blocks;
+    [SerializeField] AudioClip afterDefeat;
 
-    private Rigidbody2D rb;
     private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        bodyCollider = GetComponent<CapsuleCollider2D>();
         animator = GetComponentInChildren<Animator>();
     }
 
@@ -43,8 +39,11 @@ public class SlimeBoss : MonoBehaviour
         if (life < 0)
         {
             animator.SetTrigger("dead");
+            FindObjectOfType<AudioPlayer>().PlayComplete();
+            FindObjectOfType<AudioPlayer>().ChangeMusic(afterDefeat);
             Destroy(gameObject, 1f);
             blocks.SetActive(false);
+            bossLife.gameObject.SetActive(false);
             return;
         }
     }
@@ -55,7 +54,7 @@ public class SlimeBoss : MonoBehaviour
         bossLife.gameObject.SetActive(true);
         transform.parent.transform.localScale = new(Mathf.Abs(transform.parent.transform.localScale.x), transform.parent.transform.localScale.y);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (cinematic || DialogueManager.isActive)
         {

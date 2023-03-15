@@ -5,9 +5,9 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     Rigidbody2D myRigidBody;
-    protected float speed = 10;
-    protected int lifeTime = 3;
-    protected int damage = 3;
+    [SerializeField] protected float speed = 10;
+    [SerializeField] protected float lifeTime = 3;
+    [SerializeField] protected int damage = 3;
     PlayerMovement player;
     float xSpeed;
     // Start is called before the first frame update
@@ -16,6 +16,7 @@ public class Projectile : MonoBehaviour
         myRigidBody = GetComponent<Rigidbody2D>();
         player = FindObjectOfType<PlayerMovement>();
         xSpeed = player.transform.localScale.x * speed;
+        transform.localScale = player.transform.localScale;
         Destroy(gameObject, lifeTime);
     }
 
@@ -24,25 +25,33 @@ public class Projectile : MonoBehaviour
     {
         myRigidBody.velocity = new Vector2(xSpeed, 0f);
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.CompareTag("Platform") || other.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Player"))
         {
             //Melee Hit
             Destroy(gameObject);
             return;
         }
-        if (other.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (other.GetType().Name == "CapsuleCollider2D")
+
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            if (enemy != null)
             {
-                // nEED TO CEHCK WHAT CAN OF enemy is before getting the compeonet
-                Skeleton skeleton = other.gameObject.GetComponent<Skeleton>();
-                Vector2 direction = transform.position - skeleton.transform.position;
-                skeleton.OnHit(10, direction);
-                Destroy(gameObject);
+                Vector2 direction = transform.position - enemy.transform.position;
+                enemy.OnHit(damage, direction);
             }
+
+            SlimeBoss slimeBoss = collision.gameObject.GetComponent<SlimeBoss>();
+            if (slimeBoss != null)
+            {
+                Vector2 direction = transform.position - slimeBoss.transform.position;
+                slimeBoss.OnHit(damage);
+            }
+
+            Destroy(gameObject);
         }
+
     }
 }

@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class GameSession : MonoBehaviour
 {
     public float playerHealthPoints;
-    [SerializeField] Health health;
+    public float playerEnergyPoints;
+    //[SerializeField] Health health;
 
     // Start is called before the first frame update
     void Awake()
@@ -24,6 +25,7 @@ public class GameSession : MonoBehaviour
         if (FindObjectOfType<PlayerStats>() != null)
         {
             playerHealthPoints = FindObjectOfType<PlayerStats>().healthPointsCapacity;
+            playerEnergyPoints = FindObjectOfType<PlayerStats>().energyPointsCapacity;
         }
     }
 

@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public bool cinematic = false;
     public Animator _animator;
     public float moveSpeed = 10;
+    public bool slashActive = false;
 
     [SerializeField] float jumpSpeed = 25f;
     [SerializeField] float dashSpeed = 16f;
@@ -17,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float attackRange = 0.9f;
     [SerializeField] private int attackDamage = 10;
     [SerializeField] Vector2 _knockback = new(10,10);
+    [SerializeField] GameObject slash1;
+    [SerializeField] GameObject slash2;
 
     Rigidbody2D myRigidBody;
     PlayerStats playerStats;
@@ -89,6 +92,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (DialogueManager.isActive || cinematic)
         {
+            audioSource.Stop();
             // Stoping player to show dialogue
             myRigidBody.velocity = Vector2.zero;
             return;
@@ -231,6 +235,19 @@ public class PlayerMovement : MonoBehaviour
             _animator.SetTrigger("Attack" + _currentAttack);
             audioPlayer.PlayAttack();
 
+            if(slashActive && playerStats.energyPoints > 25)
+            {
+                if (_currentAttack == 1 || _currentAttack == 3)
+                {
+                    Instantiate(slash1, transform.Find("attackPoint").position, transform.rotation);
+                } else
+                {
+                    Instantiate(slash2, transform.Find("attackPoint").position, transform.rotation);
+                }
+                audioPlayer.PlaySlash();
+                playerStats.energyPoints -= 25;
+            }
+
             // Reset timer
             _timeSinceAttack = 0.0f;
 
@@ -267,7 +284,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator StopControl()
     {
         _canMove = false;
-        yield return new WaitForSeconds(_inmunityTime);
+        yield return new WaitForSeconds(_inmunityTime/2);
         _canMove = true;
     }
 

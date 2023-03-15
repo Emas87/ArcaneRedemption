@@ -8,6 +8,9 @@ public class PlayerStats : MonoBehaviour
     //script for store/managing exp, hp etc...
     public float healthPointsCapacity = 100;
     public float healthPoints = 100;
+    public float energyPointsCapacity = 100;
+    public float energyPoints = 100;
+    public int rechargeSpeed = 4;
     public int resistence = 0;
     public int strength = 1;
     public bool _inmunity = false;
@@ -35,7 +38,14 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(energyPoints < energyPointsCapacity)
+        {
+            energyPoints += Time.deltaTime * rechargeSpeed;
+            if(energyPoints > energyPointsCapacity)
+            {
+                energyPoints = energyPointsCapacity;
+            }
+        }
     }
     public void receiveDamage(float incomingDmg, Vector2 direction){
 
