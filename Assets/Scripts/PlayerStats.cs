@@ -23,7 +23,6 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField] Vector2 spawnPoint= Vector2.zero;
 
-    private int experience = 0;
     private Animator _animator;
     private PlayerMovement playerMovement;
 

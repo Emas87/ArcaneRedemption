@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bat : Enemy
@@ -12,7 +11,6 @@ public class Bat : Enemy
 
     [SerializeField] float speed = 15f;
 
-    [SerializeField] bool isAttacking = false;
     bool isTakingHit = false;
     bool isDead = false;
 
@@ -62,13 +60,6 @@ public class Bat : Enemy
 
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
-        if (!cinematic && !bodyCollider.IsTouchingLayers(LayerMask.GetMask("Player")))
-        {
-            isAttacking = false;
-        }
-    }
-
     IEnumerator StartChasing(){
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Vector3 playerPosition = player.transform.position;
@@ -82,7 +73,6 @@ public class Bat : Enemy
     }
 
     IEnumerator Attack(){
-        isAttacking = true;
         myAnimator.SetBool("isAttacking", true);
         
         yield return new WaitForSeconds(0.7f);

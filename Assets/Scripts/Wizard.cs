@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Wizard : Enemy
@@ -54,7 +53,7 @@ public class Wizard : Enemy
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {   
         if(!isDead){
             if(battleStarted && !onMovement){
