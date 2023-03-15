@@ -12,11 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Intro.unity
     guid: 9185922d2f1de1140bcddec56cb8b69f
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
-    guid: 2e1d3d521850c5b49a5e0aa411a84005
-  - enabled: 1
-    path: Assets/Level2/Scenes/Level2.unity
-    guid: ff291b87d4da67343bd17d2204b33424
+    path: Assets/Scenes/finalDeVerdad.unity
+    guid: 6607459bffd49c546b287eec65379b9c
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 3571751103d30384b9ceebd234cad175

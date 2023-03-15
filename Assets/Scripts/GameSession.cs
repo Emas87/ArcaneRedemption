@@ -72,6 +72,10 @@ public class GameSession : MonoBehaviour
                 // Enable Boss trigger
                 FindObjectOfType<BossDoor>().Reset();
                 break;
+            case 13:
+                FindObjectOfType<Wizard>().Reset();
+                FindObjectOfType<StartFinalBattle>().Reset();
+                break;
         }
                 
         
@@ -115,6 +119,6 @@ public class GameSession : MonoBehaviour
 
     public void OnIntroExit()
     {
-        StartCoroutine(WaitLoad(0, "Level1"));
+        StartCoroutine(WaitLoad(0, "finalDeVerdad"));
     }
 }
