@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Wizard"))
         {
 
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();

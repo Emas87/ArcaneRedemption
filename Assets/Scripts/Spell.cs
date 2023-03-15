@@ -15,13 +15,17 @@ public class Spell : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D other){
-        if(other.CompareTag("Player")){
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player")){
             GameObject player = GameObject.FindGameObjectWithTag("Player");
-            player.GetComponent<PlayerStats>().receiveDamage(spellDamage, -transform.up);
+            Vector2 direction = transform.position - player.transform.position;
+
+            player.GetComponent<PlayerStats>().receiveDamage(spellDamage, direction);
             Destroy(this.gameObject, 0f);
         }
-        else if(other.CompareTag("DarkForestTileMap")){
+        else if(collision.gameObject.CompareTag("DarkForestTileMap")){
             Destroy(this.gameObject, 0f);
         }
 

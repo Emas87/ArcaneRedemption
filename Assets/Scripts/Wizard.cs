@@ -28,7 +28,7 @@ public class Wizard : Enemy
     AudioSource myAudioSource;
     void Start()
     {
-        life = 200;
+        //life = 200;
         positions = new Vector3[4];
         positions[0] = new Vector3(315.27f, 31.68f, 0f);
         positions[1] = new Vector3(307.3f, 31.68f, 0f);

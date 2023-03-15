@@ -84,7 +84,7 @@ public class GameSession : MonoBehaviour
     public void StartGame()
     {
         // From menu Start button
-       StartCoroutine(WaitLoad(1, "Intro"));
+       StartCoroutine(WaitLoad(0.3f, "Intro"));
     }
 
     IEnumerator WaitLoad(float wait, string scene)
@@ -100,6 +100,7 @@ public class GameSession : MonoBehaviour
         // Player finishes the game
         //FindObjectOfType<ScenePersist>().Reset();
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Destroy(gameObject);
         SceneManager.LoadScene("GameOver");
     }
 
