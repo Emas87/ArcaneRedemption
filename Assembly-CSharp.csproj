@@ -100,6 +100,7 @@
     <Compile Include="Assets\Scripts\ActivePlatform.cs" />
     <Compile Include="Assets\LeanTween\Examples\Archived\TestingPunch.cs" />
     <Compile Include="Assets\Scripts\Skeleton.cs" />
+    <Compile Include="Assets\Scripts\Energy.cs" />
     <Compile Include="Assets\Scripts\Lever.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
@@ -130,7 +131,6 @@
     <Compile Include="Assets\Scripts\MedievalDoor.cs" />
     <Compile Include="Assets\LeanTween\Examples\Archived\TestingRigidbodyCS.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
-    <Compile Include="Assets\Scripts\Energy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -1,6 +1,17 @@
-Audio:{
-	"Rise03" : "wobbleboxx.com"
-	"swish_2": "artisticdude"
-	"MENU B_Select": "Some of the sounds in this project were created by David McKee (ViRiX) soundcloud.com/virix"
-	"flaunch" : "Sounds (c) by Michel Baradari apollo-music.de"
-}
+{
+	"Audio":{
+		"Rise03" : "wobbleboxx.com",
+		"swish_2": "artisticdude",
+		"MENU B_Select": "Some of the sounds in this project were created by David McKee (ViRiX) soundcloud.com/virix",
+		"flaunch" : "Sounds (c) by Michel Baradari apollo-music.de",
+		"Music": "alkakrab - https://alkakrab04.wixsite.com/portfolio",
+	},
+	"Sprites":{
+		"UI-Buttons": "OArielG - https://oarielg.wordpress.com/",
+		"Hero": "Sven Thole - https://sventhole.artstation.com/",
+		"Tile-Props": "Blackspire - http://blackspirestudio.com/",
+		"Bat": "Luiz Melo - https://luizmelo.artstation.com/",
+		"SlimeBoss": "NYKNCK - studio@nyknck.com",
+		"Skeletons/UI": "Goldmetal - https://www.goldmetal.co.kr/"
+	}
+	
