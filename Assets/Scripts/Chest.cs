@@ -19,8 +19,11 @@ public class Chest : MonoBehaviour
         spriteRenderer.sprite = open;
         GameObject contentObject = Instantiate(content, new Vector3(transform.position.x, transform.position.y + 2, 0), transform.rotation);
         Destroy(contentObject, 1f);
-
-        
+        if(contentObject.name.Contains("HeartPiece"))
+        {
+            FindObjectOfType<PlayerStats>().healthPointsCapacity += 20;
+            FindObjectOfType<PlayerStats>().healthPoints += 20;
+        }
     }
 
     private void Start()
