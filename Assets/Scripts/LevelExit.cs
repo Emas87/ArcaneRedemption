@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using Cinemachine;
 public class LevelExit : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -20,6 +20,11 @@ public class LevelExit : MonoBehaviour
     {
         if ( collision.CompareTag("Player"))
         {
+            PlayerMovement player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+            player.moveToScene2();
+            AudioSourceController audio = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSourceController>();
+            audio.putLvl2Music();
+            /*
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
             int nextSceneIndex = currentSceneIndex + 1;
             if(nextSceneIndex != SceneManager.sceneCountInBuildSettings)
@@ -27,6 +32,7 @@ public class LevelExit : MonoBehaviour
                 FindObjectOfType<ScenePersist>().Reset();
                 SceneManager.LoadScene(nextSceneIndex);
             }
+            */
         }
     }
 }
