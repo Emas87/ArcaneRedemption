@@ -11,6 +11,12 @@ TagManager:
   - Boulder
   - Trigger
   - Chest
+  - DarkForestTileMap
+  - Camera
+  - bounder
+  - Wizard
+  - Dialogue
+  - Audio
   layers:
   - Default
   - TransparentFX

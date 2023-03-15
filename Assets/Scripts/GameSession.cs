@@ -119,6 +119,6 @@ public class GameSession : MonoBehaviour
 
     public void OnIntroExit()
     {
-        StartCoroutine(WaitLoad(0, "Level1"));
+        StartCoroutine(WaitLoad(0, "finalDeVerdad"));
     }
 }

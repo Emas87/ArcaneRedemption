@@ -20,6 +20,7 @@ public class LevelExit : MonoBehaviour
     {
         if ( collision.CompareTag("Player"))
         {
+            print("detecte el teleport");
             PlayerMovement player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
             player.moveToScene2();
             AudioSourceController audio = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSourceController>();

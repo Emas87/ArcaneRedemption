@@ -5542,6 +5542,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 187975343, guid: 1fc1e247d4f803b479a6b63fa855d6ff, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 211992460, guid: 1fc1e247d4f803b479a6b63fa855d6ff, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -5633,6 +5637,18 @@ PrefabInstance:
     - target: {fileID: 3409600880928408774, guid: 1fc1e247d4f803b479a6b63fa855d6ff, type: 3}
       propertyPath: m_Name
       value: GameSession
+      objectReference: {fileID: 0}
+    - target: {fileID: 3661331683808079941, guid: 1fc1e247d4f803b479a6b63fa855d6ff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756720859555455953, guid: 1fc1e247d4f803b479a6b63fa855d6ff, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756720859555455953, guid: 1fc1e247d4f803b479a6b63fa855d6ff, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7803111977787651916, guid: 1fc1e247d4f803b479a6b63fa855d6ff, type: 3}
       propertyPath: m_RootOrder
