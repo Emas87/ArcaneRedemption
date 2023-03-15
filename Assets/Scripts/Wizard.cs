@@ -28,7 +28,7 @@ public class Wizard : Enemy
     AudioSource myAudioSource;
     void Start()
     {
-        life = 400;
+        life = 200;
         positions = new Vector3[4];
         positions[0] = new Vector3(315.27f, 31.68f, 0f);
         positions[1] = new Vector3(307.3f, 31.68f, 0f);
@@ -72,6 +72,12 @@ public class Wizard : Enemy
                 mySpriteRenderer.flipX = true;
             }
         }
+        else{
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            PlayerStats playerStats = player.GetComponent<PlayerStats>();
+            playerStats.gameOver = true;
+            Destroy(this.gameObject, 0f);
+        }
 
     }
 
@@ -80,7 +86,7 @@ public class Wizard : Enemy
         onMovement = false;
         isAttacking = false;
         specialMove = false;
-        life = 400;
+        life = 200;
         transform.position = new Vector3(307.5f, 31.84f, -0.01525223f);
 
     }
@@ -174,7 +180,6 @@ public class Wizard : Enemy
             else{
                 myAnimator.SetTrigger("isDead");
                 yield return new WaitForSeconds(0.6f);
-                Destroy(this.gameObject, 0f);
                 isDead = true;
             }
         }

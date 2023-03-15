@@ -17,6 +17,7 @@ TagManager:
   - Wizard
   - Dialogue
   - Audio
+  - Dialogue2
   layers:
   - Default
   - TransparentFX
