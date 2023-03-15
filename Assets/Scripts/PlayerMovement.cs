@@ -18,6 +18,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private int attackDamage = 10;
     [SerializeField] Vector2 _knockback = new(10,10);
 
+    Vector3 scene2Position;
+
+    Vector3 scene1Position;
+
     Rigidbody2D myRigidBody;
     PlayerStats playerStats;
     TrailRenderer myTrailRenderer;
@@ -53,6 +57,8 @@ public class PlayerMovement : MonoBehaviour
         _animator.SetBool("Grounded", true);
         _animator.SetBool("Death", false);
         audioSource.volume = audioPlayer.volume;
+        scene1Position = new Vector3(96.29f, 35.89f, 0f);
+        scene2Position = new Vector3(124.38f, 36.28f, 0f);
     }
 
     // Update is called once per frame
@@ -280,6 +286,22 @@ public class PlayerMovement : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.Find("attackPoint").position, attackRange);
+    }
+
+    public void moveToScene2(){
+        GameObject camera = GameObject.FindWithTag("bounder");
+        PolygonCollider2D confiner = camera.GetComponent<PolygonCollider2D>();
+        confiner.enabled = false;
+        transform.position = scene2Position;
+        
+            
+    }
+
+    public void moveToScene1(){
+        transform.position = scene1Position;
+        GameObject camera = GameObject.FindWithTag("bounder");
+        PolygonCollider2D confiner = camera.GetComponent<PolygonCollider2D>();
+        confiner.enabled = true;
     }
 
 }

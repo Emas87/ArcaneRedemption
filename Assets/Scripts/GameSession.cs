@@ -70,6 +70,10 @@ public class GameSession : MonoBehaviour
                 // Enable Boss trigger
                 FindObjectOfType<BossDoor>().Reset();
                 break;
+            case 13:
+                FindObjectOfType<Wizard>().Reset();
+                FindObjectOfType<StartFinalBattle>().Reset();
+                break;
         }
                 
         
