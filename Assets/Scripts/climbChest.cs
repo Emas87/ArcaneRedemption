@@ -34,7 +34,7 @@ public class climbChest : MonoBehaviour
                         Rigidbody2D rb = GameObject.FindGameObjectWithTag("DarkForestTileMap").GetComponent<Rigidbody2D>();
                         rb.sharedMaterial = null;
                         climbGained = true;
-                        BoxCollider2D dialog = GameObject.FindGameObjectWithTag("Dialogue").GetComponent<BoxCollider2D>();
+                        BoxCollider2D dialog = GameObject.FindGameObjectWithTag("Dialogue2").GetComponent<BoxCollider2D>();
                         dialog.enabled = true;
                     }
                 }

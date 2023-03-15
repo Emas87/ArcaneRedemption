@@ -50,6 +50,7 @@
      <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralUISpace.cs" />
      <Compile Include="Assets\Scripts\Boulder.cs" />
      <Compile Include="Assets\Scripts\Behaviors\JumpyBehavior.cs" />
+     <Compile Include="Assets\Scripts\AudioPlayer.cs" />
      <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSimpleUI.cs" />
      <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplineEndless.cs" />
      <Compile Include="Assets\LeanTween\Examples\Scripts\PathBezier.cs" />
@@ -60,8 +61,11 @@
      <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplines.cs" />
      <Compile Include="Assets\Scripts\Behaviors\IntroBehavior.cs" />
      <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralEventsListeners.cs" />
+     <Compile Include="Assets\Scripts\DarkForestDialogues.cs" />
      <Compile Include="Assets\Scripts\DoubleJumpChest.cs" />
      <Compile Include="Assets\Scripts\SlimeBoss.cs" />
+     <Compile Include="Assets\Scripts\AudioSourceController.cs" />
+     <Compile Include="Assets\Scripts\Checkpoint.cs" />
      <Compile Include="Assets\LeanTween\Examples\Scripts\TestingZLegacy.cs" />
      <Compile Include="Assets\Hero Knight - Pixel Art\Demo\HeroKnight.cs" />
      <Compile Include="Assets\Scripts\climbChest.cs" />
@@ -69,6 +73,7 @@
      <Compile Include="Assets\Scripts\WerewolfHabilities.cs" />
      <Compile Include="Assets\LeanTween\Examples\Scripts\PathBezier2d.cs" />
      <Compile Include="Assets\Scripts\Door.cs" />
+     <Compile Include="Assets\Scripts\Wizard.cs" />
      <Compile Include="Assets\Hero Knight - Pixel Art\ColorSwap\ColorSwap_HeroKnight.cs" />
      <Compile Include="Assets\LeanTween\Framework\LTDescrOptional.cs" />
      <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralEasingTypes.cs" />
@@ -82,6 +87,7 @@
      <Compile Include="Assets\Scripts\ActivePlatform.cs" />
      <Compile Include="Assets\LeanTween\Examples\Archived\TestingPunch.cs" />
      <Compile Include="Assets\Scripts\Skeleton.cs" />
+     <Compile Include="Assets\Scripts\Energy.cs" />
      <Compile Include="Assets\Scripts\Lever.cs" />
      <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
@@ -89,12 +95,14 @@
      <Compile Include="Assets\Scripts\MenuScroller.cs" />
      <Compile Include="Assets\Scripts\Pikes.cs" />
      <Compile Include="Assets\Scripts\Chest.cs" />
+     <Compile Include="Assets\Scripts\StartFinalBattle.cs" />
      <Compile Include="Assets\LeanTween\Examples\Scripts\PathSpline.cs" />
      <Compile Include="Assets\Scripts\Projectile.cs" />
      <Compile Include="Assets\Scripts\Behaviors\runBehaviour.cs" />
      <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralAdvancedTechniques.cs" />
      <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
      <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasics2d.cs" />
+     <Compile Include="Assets\Scripts\Spell.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplineTrack.cs" />
      <Compile Include="Assets\LeanTween\Framework\LeanTest.cs" />
@@ -113,14 +121,6 @@
      <Compile Include="Assets\Scripts\LevelEnter.cs" />
      <Compile Include="Assets\LeanTween\Examples\Archived\TestingRigidbodyCS.cs" />
      <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
-     <Compile Include="Assets\Scripts\Wizard.cs" />
-     <Compile Include="Assets\Scripts\Spell.cs" />
-     <Compile Include="Assets\Scripts\Checkpoint.cs" />
-     <Compile Include="Assets\Scripts\DarkForestDialogues.cs" />
-     <Compile Include="Assets\Scripts\StartFinalBattle.cs" />
-     <Compile Include="Assets\Scripts\AudioPlayer.cs" />
-     <Compile Include="Assets\Scripts\AudioSourceController.cs" />
-     <Compile Include="Assets\Scripts\Energy.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\LeanTween\ReadMe.txt" />

@@ -20,10 +20,9 @@ public class PlayerStats : MonoBehaviour
     public bool dashHability = true;
     public bool wolfHability = false;
     public bool vampHability = false;
-
+    public bool gameOver = false;
     [SerializeField] Vector2 spawnPoint= Vector2.zero;
 
-    private int experience = 0;
     private Animator _animator;
     private PlayerMovement playerMovement;
 
@@ -37,14 +36,19 @@ public class PlayerStats : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if(energyPoints < energyPointsCapacity)
-        {
-            energyPoints += Time.deltaTime * rechargeSpeed;
-            if(energyPoints > energyPointsCapacity)
+    {   
+        if(!gameOver){
+            if(energyPoints < energyPointsCapacity)
             {
-                energyPoints = energyPointsCapacity;
+                energyPoints += Time.deltaTime * rechargeSpeed;
+                if(energyPoints > energyPointsCapacity)
+                {
+                    energyPoints = energyPointsCapacity;
+                }
             }
+        }
+        else{
+            FindObjectOfType<GameSession>().GameOver();
         }
     }
     public void receiveDamage(float incomingDmg, Vector2 direction){

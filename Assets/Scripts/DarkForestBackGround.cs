@@ -6,7 +6,7 @@ public class DarkForestBackGround : MonoBehaviour
 {   
 
     [SerializeField] GameObject player;
-    float smoothing = 4f;
+
 
     // Start is called before the first frame update
     void Start()

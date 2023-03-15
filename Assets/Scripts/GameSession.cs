@@ -9,6 +9,7 @@ public class GameSession : MonoBehaviour
     public float playerHealthPoints;
     public float playerEnergyPoints;
     //[SerializeField] Health health;
+    
 
     // Start is called before the first frame update
     void Awake()
@@ -40,9 +41,9 @@ public class GameSession : MonoBehaviour
         PlayerMovement movement = FindObjectOfType<PlayerMovement>();
         PlayerStats stats = FindObjectOfType<PlayerStats>();
         movement._animator.SetTrigger("Respawn");
-        stats.ResetPlayer();
-
         ResetWorld();
+        yield return new WaitForSeconds(0.3f);
+        stats.ResetPlayer();
     }
 
     private void ResetWorld()
@@ -73,6 +74,7 @@ public class GameSession : MonoBehaviour
                 FindObjectOfType<BossDoor>().Reset();
                 break;
             case 13:
+                print("toy en el ultimo checkpoint");
                 FindObjectOfType<Wizard>().Reset();
                 FindObjectOfType<StartFinalBattle>().Reset();
                 break;
